@@ -1,10 +1,14 @@
 import React from 'react'
 import css from './ButtonContainer.css'
+import Button from '../Button/Button'
+
 
 const ButtonContainer = () => {
   return (
     <div>
-      <h1>ButtonContainer</h1>
+      <Button name="People" />
+      <Button name="Planets" />
+      <Button name="Vehicles" />
     </div>
   )
 }

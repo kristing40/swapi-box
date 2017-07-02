@@ -3,9 +3,7 @@ import css from './Favorites.css'
 
 const Favorites = () => {
   return (
-    <div>
-      <h1>Favorites</h1>
-    </div>
+      <button>Favorites</button>
   )
 }
 

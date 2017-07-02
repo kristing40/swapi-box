@@ -1,11 +1,13 @@
-import React from 'react'
-import css from './Header.css'
+import React from 'react';
+import css from './Header.css';
 import PropTypes from 'prop-types';
+import Favorites from '../Favorites/Favorites';
 
 const Header = () =>{
   return (
     <div>
-      <h2>Header</h2>
+      <h1>Swapi Box!!!</h1>
+      <Favorites />
     </div>
   )
 }
