@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const Card = () => {
   return (
     <div>
-      <h1>CardContainer</h1>
+      <p>CardContainer</p>
     </div>
   )
 }

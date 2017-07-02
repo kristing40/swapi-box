@@ -11,8 +11,10 @@ class App extends Component {
   constructor (){
     super()
     this.state = {
-      scrollerText: ''
+      scrollerText: '',
+      people: []
     }
+    this.handlePeopleCLick = this.handlePeopleCLick.bind(this);
   }
 
   componentDidMount() {
@@ -28,6 +30,15 @@ class App extends Component {
       return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
+  handlePeopleCLick() {
+    // fetch('http://swapi.co/api/people/')
+    //   .then((response) => response.json())
+    //   .then((responseData) => {
+    //     this.setState({people: responseData})
+    //   })
+        console.log('working');
+  }
+
   render() {
    let { scrollerText } = this.state;
 
@@ -35,7 +46,7 @@ class App extends Component {
       <div>
         <Scroller scrollerText={ scrollerText }/>
         <Header/>
-        <ButtonContainer/>
+        <ButtonContainer handlePeopleCLick={this.handlePeopleCLick}/>
         <InfoContainer/>
       </div>
     );

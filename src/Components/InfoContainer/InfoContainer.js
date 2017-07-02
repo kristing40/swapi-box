@@ -1,10 +1,11 @@
 import React from 'react'
 import css from './InfoContainer.css'
+import Card from '../Card/Card'
 
 const InfoContainer = () => {
   return (
     <div>
-      <h1>InfoContainer</h1>
+      <Card/>
     </div>
   )
 }
