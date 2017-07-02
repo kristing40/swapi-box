@@ -1,10 +1,11 @@
 import React from 'react'
 import css from './CardContainer.css'
+import Card from '../Card/Card'
 
-const CardContainer = () => {
+const CardContainer = ( { peopleData }) => {
   return (
     <div>
-      <h1>CardContainer</h1>
+      <Card peopleData={peopleData}/>
     </div>
   )
 }
