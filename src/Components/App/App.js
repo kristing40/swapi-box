@@ -24,6 +24,11 @@ class App extends Component {
       .then((responseData) => {
         this.setState({scrollerText: responseData.opening_crawl})
       })
+      // fetch('http://swapi.co/api/people/')
+      //   .then((response) => response.json())
+      //   .then((responseData) => {
+      //     this.setState({people: responseData})
+      //   })
   }
 
   randomNumberGenerator(min, max) {
@@ -31,11 +36,7 @@ class App extends Component {
   }
 
   handlePeopleCLick() {
-    // fetch('http://swapi.co/api/people/')
-    //   .then((response) => response.json())
-    //   .then((responseData) => {
-    //     this.setState({people: responseData})
-    //   })
+
         console.log('working');
   }
 
