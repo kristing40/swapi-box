@@ -3,10 +3,10 @@ import css from './ButtonContainer.css'
 import Button from '../Button/Button'
 
 
-const ButtonContainer = () => {
+const ButtonContainer = ( { handlePeopleCLick } ) => {
   return (
     <div>
-      <Button name="People" />
+      <Button name="People" handlePeopleCLick={ handlePeopleCLick } />
       <Button name="Planets" />
       <Button name="Vehicles" />
     </div>

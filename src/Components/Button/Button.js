@@ -1,9 +1,12 @@
 import React from 'react'
 import css from './Button.css'
 
-const Button = ({name}) => {
+
+const Button = ({ name, handlePeopleCLick }) => {
   return (
-    <button>{name}</button>
+    <div>
+      <button onClick={ handlePeopleCLick }>{ name }</button>
+    </div>
   )
 }
 export default Button;
