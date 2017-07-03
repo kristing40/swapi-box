@@ -33,16 +33,16 @@ class App extends Component {
   }
 
   handlePeopleCLick() {
-    // Promise.all([
-    // fetch('http://swapi.co/api/people/'),
-    // fetch('http://swapi.co/api/planets/1/')
-    // ])
-      fetch('http://swapi.co/api/people/')
+    Promise.all([
+    fetch('http://swapi.co/api/people/'),
+    fetch('http://swapi.co/api/planets/1/')
+    ])
+      // fetch('http://swapi.co/api/people/')
       .then((response) => response.json())
       .then((responseData) => {
 
-        // let peopleData = responseData[0].responseData;
-        // let planetData = responseData[1].responseData;
+        let peopleData = responseData[0].responseData;
+        let planetData = responseData[1].responseData;
 
         this.setState({people: responseData})
       })
