@@ -38,8 +38,33 @@ class App extends Component {
       .then((responseData) => {
         this.setState({people: responseData})
       })
-      // console.log('working');
+      // .then((responseData) => {
+      //   const promiseArray = [];
+      //   responseData.results.forEach(e => {
+      //     const promises = getData(responseData.results.homeworld);
+      //     promiseArray.push(promises)
+      //   }
+      //   return promiseArray
+      // })
+      // .Promise.all(promiseArray)
+
+
+
+
+      // .then((data) => {
+      //   const peopleArray = this.state.people.results
+      //   for(let i = 0; i > peopleArray[i].length; i++) {
+      //     fetch(`'${peopleArray.results[i].homeworld}'`)
+      //     .then(homeworldData => console.log(homeworldData))
+      //     .catch((error) => console.log('error', error))
+      //   }
+      // });
   }
+
+  getData(url) {
+    fetch(url)
+  }
+
 
   render() {
    let { scrollerText } = this.state;
