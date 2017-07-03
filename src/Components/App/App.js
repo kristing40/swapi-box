@@ -32,43 +32,35 @@ class App extends Component {
       return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
-  handlePeopleCLick() {
-    Promise.all([
-    fetch('http://swapi.co/api/people/'),
-    fetch('http://swapi.co/api/planets/1/')
-    ])
-      // fetch('http://swapi.co/api/people/')
+  getData() {
+
+    return fetch('http://swapi.co/api/people/')
       .then((response) => response.json())
-      .then((responseData) => {
+      .then((data) => {
+        // console.log(data.results);
+        const peopleArray = data.results.map(e => {
+          const homeworld = fetch(e.homeworld)
 
-        let peopleData = responseData[0].responseData;
-        let planetData = responseData[1].responseData;
-
-        this.setState({people: responseData})
+          .then((response) => response.json())
+          .then((planet) => ({name: planet.name, population: planet.population}))
+          const species = fetch(e.species[0])
+          .then((response) => response.json())
+          .then((spec) => ({name: spec.name, language: spec.language}))
+          return Promise.all([homeworld, species])
+          .then((finalResult) => ({name: e.name, homeworld: finalResult[0].name, population: finalResult[0].population, species: finalResult[1].name, language: finalResult[1].language}))
+        })
+        // console.log(peopleArray);
+        return Promise.all(peopleArray)
       })
+  }
 
-      // .then((responseData) => {
-      //   const promiseArray = [];
-      //   responseData.results.forEach(e => {
-      //     const promises = getData(responseData.results.homeworld);
-      //     promiseArray.push(promises)
-      //   }
-      //   return promiseArray
-      // })
-      // .Promise.all(promiseArray)
 
-      // .then((data) => {
-      //   const peopleArray = this.state.people.results
-      //   for(let i = 0; i > peopleArray[i].length; i++) {
-      //     fetch(`'${peopleArray.results[i].homeworld}'`)
-      //     .then(homeworldData => console.log(homeworldData))
-      //     .catch((error) => console.log('error', error))
-      //   }
-      // });
-}
-
-  getData(url) {
-    fetch(url)
+  handlePeopleCLick(promise) {
+    this.getData()
+      .then((response) => {
+        console.log(response);
+        this.setState({people: response})
+      })
   }
 
 

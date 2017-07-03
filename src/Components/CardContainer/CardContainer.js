@@ -4,12 +4,18 @@ import Card from '../Card/Card'
 
 const CardContainer = ( { peopleData }) => {
   let names;
-  if (peopleData.results) {
+  if (peopleData) {
+    console.log(peopleData);
+    names = peopleData.map((person, index) => {
 
-    names = peopleData.results.map((person, index) => {
-      return <Card key={index} name={person.name} />
+      return <Card key={index}
+                   name={person.name}
+                   homeworld={person.homeworld}
+                   language={person.language}
+                   population={person.population}
+                   species={person.species} />
     })
-    console.log(peopleData.results[0]);
+    // console.log(peopleData.results[0]);
   }
 
   return (
