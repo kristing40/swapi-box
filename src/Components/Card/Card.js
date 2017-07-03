@@ -1,5 +1,5 @@
-import React from 'react'
-import css from './Card.css'
+import React from 'react';
+import css from './Card.css';
 import PropTypes from 'prop-types';
 
 const Card = ({peopleData}) => {
