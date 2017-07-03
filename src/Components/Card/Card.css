@@ -1,7 +1,11 @@
+body {
+  box-sizing: border-box;
+}
 .card {
   background-color: beige;
-  height: 100px;
-  width: 150px;
   border: 1px solid black;
+  height: 180px;
   margin-bottom: 10px;
+  padding: 5px;
+  width: 150px;
 }
