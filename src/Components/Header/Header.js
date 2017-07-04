@@ -5,8 +5,8 @@ import Favorites from '../Favorites/Favorites';
 
 const Header = () =>{
   return (
-    <div>
-      <h1>Swapi Box!!!</h1>
+    <div className="header-container">
+      <h1>SWAPI Box!!!</h1>
       <Favorites />
     </div>
   )

@@ -1,3 +1,15 @@
 body {
   box-sizing: border-box;
 }
+.button-div {
+  display: inline-block;
+  height: 50px;
+  width: 20%;
+  text-align: center;
+}
+
+.btn {
+  height: 30px;
+  width: 90px;
+  margin: 8px;
+}

@@ -4,8 +4,8 @@ import css from './Button.css'
 
 const Button = ({ name, handlePeopleCLick }) => {
   return (
-    <div>
-      <button onClick={ handlePeopleCLick }>{ name }</button>
+    <div className="button-div">
+      <button className="btn" onClick={ handlePeopleCLick }>{ name }</button>
     </div>
   )
 }

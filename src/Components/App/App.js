@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import 'whatwg-fetch';
-
 import Scroller from '../Scroller/Scroller'
 import Header from '../Header/Header'
 import ButtonContainer from '../ButtonContainer/ButtonContainer'
@@ -33,17 +32,15 @@ class App extends Component {
   }
 
   getData() {
-
     return fetch('http://swapi.co/api/people/')
       .then((response) => response.json())
       .then((data) => {
         // console.log(data.results);
         const peopleArray = data.results.map(e => {
-          const homeworld = fetch(e.homeworld)
-
+        const homeworld = fetch(e.homeworld)
           .then((response) => response.json())
-          .then((planet) => ({name: planet.name, population: planet.population}))
-          const species = fetch(e.species[0])
+          .then((planet) => ({name: planet.name, population:     planet.population}))
+        const species = fetch(e.species[0])
           .then((response) => response.json())
           .then((spec) => ({name: spec.name, language: spec.language}))
           return Promise.all([homeworld, species])
@@ -54,11 +51,10 @@ class App extends Component {
       })
   }
 
-
   handlePeopleCLick(promise) {
     this.getData()
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         this.setState({people: response})
       })
   }
@@ -66,7 +62,6 @@ class App extends Component {
 
   render() {
    let { scrollerText } = this.state;
-
     return (
       <div>
         <Scroller scrollerText={ scrollerText }/>
@@ -77,7 +72,5 @@ class App extends Component {
     );
   }
 }
-
-
 
 export default App;
