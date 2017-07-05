@@ -16,6 +16,7 @@ class App extends Component {
       people: []
     }
     this.handlePeopleCLick = this.handlePeopleCLick.bind(this);
+    this.handlePlanetCLick = this.handlePlanetCLick.bind(this);
   }
 
   componentDidMount() {
@@ -61,6 +62,17 @@ class App extends Component {
       })
   }
 
+getPlanetData() {
+  fetch('http://swapi.co/api/planets/')
+  .then((response) => response.json())
+  .then((responseData) => {
+    console.log(responseData);
+  })
+}
+
+handlePlanetCLick(){
+console.log('working');
+}
 
 
 
@@ -75,7 +87,8 @@ class App extends Component {
                 />
 
         <Header/>
-        <ButtonContainer handlePeopleCLick={this.handlePeopleCLick}/>
+        <ButtonContainer handlePeopleCLick={this.handlePeopleCLick}
+                         handlePlanetCLick={this.handlePlanetCLick} />
         <CardContainer peopleData={this.state.people}/>
       </div>
     );
