@@ -13,7 +13,8 @@ class App extends Component {
       scrollerText: '',
       scrollerTitle: '',
       releaseDate: '',
-      people: []
+      people: [],
+      planets: []
     }
     this.handlePeopleCLick = this.handlePeopleCLick.bind(this);
     this.handlePlanetCLick = this.handlePlanetCLick.bind(this);
@@ -42,7 +43,7 @@ class App extends Component {
         const peopleArray = data.results.map(e => {
         const homeworld = fetch(e.homeworld)
           .then((response) => response.json())
-          .then((planet) => ({name: planet.name, population:     planet.population}))
+          .then((planet) => ({name: planet.name, population: planet.population}))
         const species = fetch(e.species[0])
           .then((response) => response.json())
           .then((spec) => ({name: spec.name, language: spec.language}))
@@ -55,7 +56,6 @@ class App extends Component {
   }
 
   handlePeopleCLick(promise) {
-    console.log('working people');
     this.getPeopleData()
       .then((response) => {
         // console.log(response);
@@ -64,15 +64,27 @@ class App extends Component {
   }
 
 getPlanetData() {
-  fetch('http://swapi.co/api/planets/')
+  return fetch('http://swapi.co/api/planets/')
   .then((response) => response.json())
   .then((responseData) => {
-    console.log(responseData);
+    const residentArray = responseData.results.map(planet => {
+      return Promise.all(planet.residents.map(url => {
+        return fetch(url)
+          .then(data => data.json())
+          .then(cleanData => cleanData.name)
+      }))
+      .then(response => ({name: planet.name, terrain: planet.terrain, climate: planet.climate, population: planet.population, residents: response}))
+    })
+    return Promise.all(residentArray)
   })
 }
 
 handlePlanetCLick() {
-  console.log('working');
+  this.getPlanetData()
+    .then(planetsData => {
+      this.setState({ planets: planetsData });
+    })
+
 }
 
 
