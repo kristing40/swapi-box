@@ -6,7 +6,7 @@ import Button from '../Button/Button'
 const ButtonContainer = ( { handlePeopleCLick, handlePlanetCLick } ) => {
   return (
     <div className="button-container">
-      <Button name="People" handlClick={ handlePeopleCLick } />
+      <Button name="People" handleClick={ handlePeopleCLick } />
       <Button name="Planets"  handleClick={ handlePlanetCLick }/>
       <Button name="Vehicles" />
     </div>

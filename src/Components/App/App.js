@@ -55,6 +55,7 @@ class App extends Component {
   }
 
   handlePeopleCLick(promise) {
+    console.log('working people');
     this.getPeopleData()
       .then((response) => {
         // console.log(response);
@@ -70,8 +71,8 @@ getPlanetData() {
   })
 }
 
-handlePlanetCLick(){
-console.log('working');
+handlePlanetCLick() {
+  console.log('working');
 }
 
 
