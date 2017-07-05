@@ -5,7 +5,7 @@ import Card from '../Card/Card'
 const CardContainer = ( { peopleData }) => {
   let names;
   if (peopleData) {
-    console.log(peopleData);
+    // console.log(peopleData);
     names = peopleData.map((person, index) => {
 
       return <Card key={index}

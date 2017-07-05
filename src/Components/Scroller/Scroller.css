@@ -1,11 +1,15 @@
 body {
   box-sizing: border-box;
 }
-.scroller-txt {
+.scroller {
   display: flex;
   justify-content: center;
   align-content: center;
   float: left;
   height: 100%;
-  width: 300px;
+  width: 25%;
+}
+.scroller-txt {
+  line-height: 30px;
+  width: 255px;
 }

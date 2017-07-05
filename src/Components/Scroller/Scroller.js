@@ -3,8 +3,8 @@ import css from './Scroller.css'
 
 const Scroller = ({ scrollerText }) => {
   return (
-    <div className="scroller-txt">
-      <p>{scrollerText}</p>
+    <div className="scroller">
+      <p className="scroller-txt">{scrollerText}</p>
     </div>
   )
 }
