@@ -11,6 +11,8 @@ class App extends Component {
     super()
     this.state = {
       scrollerText: '',
+      scrollerTitle: '',
+      releaseDate: '',
       people: []
     }
     this.handlePeopleCLick = this.handlePeopleCLick.bind(this);
@@ -22,8 +24,8 @@ class App extends Component {
     fetch('http://swapi.co/api/films/' + ranNum + '/')
       .then((response) => response.json())
       .then((responseData) => {
-        this.setState({scrollerText: responseData.opening_crawl})
-      })
+        this.setState({scrollerText: responseData.opening_crawl, scrollerTitle: responseData.title, releaseDate: responseData.release_date})
+      });
 
   }
 
@@ -31,7 +33,7 @@ class App extends Component {
       return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
-  getData() {
+  getPeopleData() {
     return fetch('http://swapi.co/api/people/')
       .then((response) => response.json())
       .then((data) => {
@@ -52,7 +54,7 @@ class App extends Component {
   }
 
   handlePeopleCLick(promise) {
-    this.getData()
+    this.getPeopleData()
       .then((response) => {
         // console.log(response);
         this.setState({people: response})
@@ -60,11 +62,18 @@ class App extends Component {
   }
 
 
+
+
+
   render() {
-   let { scrollerText } = this.state;
+   let { scrollerText, scrollerTitle, releaseDate } = this.state;
     return (
       <div>
-        <Scroller scrollerText={ scrollerText }/>
+        <Scroller scrollerText={ scrollerText}
+                  scrollerTitle={scrollerTitle}
+                  releaseDate={releaseDate}
+                />
+
         <Header/>
         <ButtonContainer handlePeopleCLick={this.handlePeopleCLick}/>
         <CardContainer peopleData={this.state.people}/>

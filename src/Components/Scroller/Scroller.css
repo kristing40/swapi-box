@@ -5,11 +5,14 @@ body {
   display: flex;
   justify-content: center;
   align-content: center;
+  flex-direction: column;
   float: left;
   height: 100%;
   width: 25%;
+
 }
 .scroller-txt {
+  font-size: 18px;
   line-height: 30px;
   width: 255px;
 }
