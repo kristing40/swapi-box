@@ -53,13 +53,18 @@ class App extends Component {
           .then((response) => response.json())
           .then((spec) => ({name: spec.name, language: spec.language}))
           return Promise.all([homeworld, species])
-          .then((finalResult) => ({name: e.name, homeworld: finalResult[0].name, population: finalResult[0].population, species: finalResult[1].name, language: finalResult[1].language}))
+          .then((finalResult) => ({name: e.name, homeworld: finalResult[0].name, population: finalResult[0].population, species: finalResult[1].name, language: finalResult[1].language, favorited: false}))
         })
         return Promise.all(peopleArray)
       })
   }
 
   handlePeopleCLick(promise) {
+    if (this.state.people.length > 0) {
+      this.setState({view: 'people'})
+      return
+    }
+
     this.getPeopleData()
       .then((response) => {
         this.setState({
@@ -79,13 +84,17 @@ getPlanetData() {
           .then(data => data.json())
           .then(cleanData => cleanData.name)
       }))
-      .then(response => ({name: planet.name, terrain: planet.terrain, climate: planet.climate, population: planet.population, residents: response}))
+      .then(response => ({name: planet.name, terrain: planet.terrain, climate: planet.climate, population: planet.population, residents: response, favorited: false}))
     })
     return Promise.all(residentArray)
   })
 }
 
 handlePlanetCLick() {
+  if (this.state.planets.length > 0) {
+    this.setState({view: 'planets'})
+    return
+  }
   this.getPlanetData()
     .then(planetsData => {
       this.setState({
@@ -96,6 +105,10 @@ handlePlanetCLick() {
 }
 
 getVehicles() {
+  if (this.state.vehicles.length > 0) {
+    this.setState({view: 'vehicles'})
+    return
+  }
   return fetch('http://swapi.co/api/vehicles/')
   .then((response) => response.json())
   .then((vehicleResponse) => {
@@ -104,7 +117,8 @@ getVehicles() {
         name: vehicle.name,
         model:vehicle.model,
         class: vehicle.vehicle_class,
-        passengers: vehicle.passengers
+        passengers: vehicle.passengers,
+        favorited: false
       })
     })
     return cleanedVehicles;
@@ -122,13 +136,52 @@ getVehicles() {
   }
 
   addToFavorites(data) {
-    const newFavoritesArray = Array.from(this.state.favorites);
-    newFavoritesArray.push(data);
-    this.setState({favorites: newFavoritesArray});
+    if (data.favorited === true) {
+      data.favorited = false;
+      const newFavoritesArray = this.state.favorites.filter(favorite => {
+        return data.name !== favorite.name
+      });
+      this.setState({favorites: newFavoritesArray});
+    } else {
+      data.favorited = true
+    }
+
+    console.log(data);
+    // this.deleteFavorites(data)
+    // const newObject = Object.assign(data, {favorites: true})
+    // const newFavoritesArray = Array.from(this.state.favorites);
+    // newFavoritesArray.push(data);
+    // this.setState({favorites: newFavoritesArray});
   }
 
+
+
+  // deleteFavorites(data) {
+  //   if (this.state.favorites.find(data).favorites) {
+  //     this.state.favorites.filter(favorite => {
+  //       delete data.favorites
+  //       return data.name !== favorite.name
+  //     })
+  //   }
+  // }
+
+
   handleFavoritesClick(){
-    this.setState({view: "favorites"});
+    const newPeople = this.state.people.filter(person => person.favorited === true)
+    const newPlanet = this.state.planets.filter(planet => planet.favorited === true)
+    const newVehicles = this.state.vehicles.filter(vehicle => vehicle.favorited === true)
+
+    console.log(newVehicles);
+    console.log(newPlanet);
+    console.log(newPeople);
+
+    const newFavorites = [...newVehicles, ...newPlanet, ...newPeople]
+    console.log('new favorites', newFavorites);
+
+    this.setState({
+      view: "favorites",
+      favorites: newFavorites
+    });
   }
 
   render() {
