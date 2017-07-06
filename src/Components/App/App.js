@@ -16,11 +16,13 @@ class App extends Component {
       people: [],
       planets: [],
       vehicles: [],
+      favorites: [],
       view: ''
     }
     this.handlePeopleCLick = this.handlePeopleCLick.bind(this);
     this.handlePlanetCLick = this.handlePlanetCLick.bind(this);
     this.handleVehicleCLick = this.handleVehicleCLick.bind(this);
+    this.addToFavorites = this.addToFavorites.bind(this);
   }
 
   componentDidMount() {
@@ -112,11 +114,18 @@ getVehicles() {
       view: 'vehicles'
     })
    })
-}
+  }
 
-handleVehicleCLick() {
-  this.getVehicles();
-}
+  handleVehicleCLick() {
+    this.getVehicles();
+  }
+
+  addToFavorites(data) {
+    const newFavoritesArray = Array.from(this.state.favorites);
+    newFavoritesArray.push(data);
+    this.setState({favorites: newFavoritesArray});
+  }
+
 
   render() {
 
@@ -136,7 +145,8 @@ handleVehicleCLick() {
         <CardContainer peopleData={this.state.people}
                        planetData={this.state.planets}
                        view={this.state.view}
-                       vehicleData={this.state.vehicles}/>
+                       vehicleData={this.state.vehicles}
+                       handleClick={this.addToFavorites}/>
       </div>
     );
   }
