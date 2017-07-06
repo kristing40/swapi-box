@@ -2,25 +2,27 @@ import React from 'react'
 import css from './CardContainer.css'
 import Card from '../Card/Card'
 
-const CardContainer = ( { peopleData }) => {
-  let names;
-  if (peopleData) {
-    // console.log(peopleData);
-    names = peopleData.map((person, index) => {
+const CardContainer = ( { peopleData, planetData, view }) => {
+  let peopleCard;
+  let planetCard
 
+  if (peopleData && view === 'people') {
+    peopleCard = peopleData.map((person, index) => {
       return <Card key={index}
-                   name={person.name}
-                   homeworld={person.homeworld}
-                   language={person.language}
-                   population={person.population}
-                   species={person.species} />
+                   data={person} />
     })
-    // console.log(peopleData.results[0]);
+  }
+  else if (planetData && view === 'planets') {
+    // console.log(planetData);
+    planetCard = planetData.map((planet, index) => {
+      return <Card key={index}
+                   data={planet} />
+    })
   }
 
   return (
     <div className="card-container">
-      {names}
+      {peopleCard || planetCard}
     </div>
   )
 }
