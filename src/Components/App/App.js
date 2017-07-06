@@ -14,7 +14,8 @@ class App extends Component {
       scrollerTitle: '',
       releaseDate: '',
       people: [],
-      planets: []
+      planets: [],
+      view: ''
     }
     this.handlePeopleCLick = this.handlePeopleCLick.bind(this);
     this.handlePlanetCLick = this.handlePlanetCLick.bind(this);
@@ -59,7 +60,10 @@ class App extends Component {
     this.getPeopleData()
       .then((response) => {
         // console.log(response);
-        this.setState({people: response})
+        this.setState({
+          people: response,
+          view: 'people'
+        })
       })
   }
 
@@ -82,7 +86,10 @@ getPlanetData() {
 handlePlanetCLick() {
   this.getPlanetData()
     .then(planetsData => {
-      this.setState({ planets: planetsData });
+      this.setState({
+        planets: planetsData,
+        view: 'planets'
+       });
     })
 
 }
@@ -102,7 +109,9 @@ handlePlanetCLick() {
         <Header/>
         <ButtonContainer handlePeopleCLick={this.handlePeopleCLick}
                          handlePlanetCLick={this.handlePlanetCLick} />
-        <CardContainer peopleData={this.state.people}/>
+        <CardContainer peopleData={this.state.people}
+                       planetData={this.state.planets}
+                       view={this.state.view}/>
       </div>
     );
   }
