@@ -12,7 +12,7 @@ const Card = ({ data, handleClick }) => {
   // TODO: refactor!!!
   return (
     <div className="card">
-      <button onClick={(e) => handleClick(data)}>Favorties</button>
+      <button onClick={(e) => handleClick(data)}>Favorites</button>
       <p>{data.name}</p>
       <p>{data.homeworld || data.terrain || data.model}</p>
       <p>{data.language || data.climate || data.class}</p>
