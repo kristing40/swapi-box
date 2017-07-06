@@ -2,9 +2,10 @@ import React from 'react'
 import css from './CardContainer.css'
 import Card from '../Card/Card'
 
-const CardContainer = ( { peopleData, planetData, view }) => {
+const CardContainer = ( { peopleData, planetData, view, vehicleData  }) => {
   let peopleCard;
-  let planetCard
+  let planetCard;
+  let vehicleCard;
 
   if (peopleData && view === 'people') {
     peopleCard = peopleData.map((person, index) => {
@@ -12,17 +13,22 @@ const CardContainer = ( { peopleData, planetData, view }) => {
                    data={person} />
     })
   }
-  else if (planetData && view === 'planets') {
-    // console.log(planetData);
+  if (planetData && view === 'planets') {
     planetCard = planetData.map((planet, index) => {
       return <Card key={index}
                    data={planet} />
     })
   }
+  if (vehicleData && view === 'vehicles') {
+    vehicleCard = vehicleData.map((vehicle, index) => {
+      return <Card key={index}
+                   data={vehicle} />
+    })
+  }
 
   return (
     <div className="card-container">
-      {peopleCard || planetCard}
+      {peopleCard || planetCard || vehicleCard}
     </div>
   )
 }

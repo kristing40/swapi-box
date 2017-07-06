@@ -15,10 +15,12 @@ class App extends Component {
       releaseDate: '',
       people: [],
       planets: [],
+      vehicles: [],
       view: ''
     }
     this.handlePeopleCLick = this.handlePeopleCLick.bind(this);
     this.handlePlanetCLick = this.handlePlanetCLick.bind(this);
+    this.handleVehicleCLick = this.handleVehicleCLick.bind(this);
   }
 
   componentDidMount() {
@@ -40,7 +42,6 @@ class App extends Component {
     return fetch('http://swapi.co/api/people/')
       .then((response) => response.json())
       .then((data) => {
-        // console.log(data.results);
         const peopleArray = data.results.map(e => {
         const homeworld = fetch(e.homeworld)
           .then((response) => response.json())
@@ -51,7 +52,6 @@ class App extends Component {
           return Promise.all([homeworld, species])
           .then((finalResult) => ({name: e.name, homeworld: finalResult[0].name, population: finalResult[0].population, species: finalResult[1].name, language: finalResult[1].language}))
         })
-        // console.log(peopleArray);
         return Promise.all(peopleArray)
       })
   }
@@ -59,7 +59,6 @@ class App extends Component {
   handlePeopleCLick(promise) {
     this.getPeopleData()
       .then((response) => {
-        // console.log(response);
         this.setState({
           people: response,
           view: 'people'
@@ -91,13 +90,36 @@ handlePlanetCLick() {
         view: 'planets'
        });
     })
-
 }
 
+getVehicles() {
+  return fetch('http://swapi.co/api/vehicles/')
+  .then((response) => response.json())
+  .then((vehicleResponse) => {
+    const cleanedVehicles = vehicleResponse.results.map((vehicle) => {
+      return ({
+        name: vehicle.name,
+        model:vehicle.model,
+        class: vehicle.vehicle_class,
+        passengers: vehicle.passengers
+      })
+    })
+    return cleanedVehicles;
+  })
+  .then((cleanedVehicles) => {
+    this.setState({
+      vehicles: cleanedVehicles,
+      view: 'vehicles'
+    })
+   })
+}
 
-
+handleVehicleCLick() {
+  this.getVehicles();
+}
 
   render() {
+
    let { scrollerText, scrollerTitle, releaseDate } = this.state;
     return (
       <div>
@@ -108,10 +130,13 @@ handlePlanetCLick() {
 
         <Header/>
         <ButtonContainer handlePeopleCLick={this.handlePeopleCLick}
-                         handlePlanetCLick={this.handlePlanetCLick} />
+                         handlePlanetCLick={this.handlePlanetCLick}
+                         handleVehicleCLick={this.handleVehicleCLick}
+                       />
         <CardContainer peopleData={this.state.people}
                        planetData={this.state.planets}
-                       view={this.state.view}/>
+                       view={this.state.view}
+                       vehicleData={this.state.vehicles}/>
       </div>
     );
   }
