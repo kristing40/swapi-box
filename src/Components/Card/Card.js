@@ -6,8 +6,8 @@ const Card = ({ data }) => {
   console.log(data);
   let residentArray;
   if (data.residents) {
-    residentArray = data.residents.map(resident => {
-      return <p>{resident}</p>
+    residentArray = data.residents.map((resident, index) => {
+      return <p key={index}>{resident}</p>
     })
   }
 
@@ -16,7 +16,8 @@ const Card = ({ data }) => {
       <p>{data.name}</p>
       <p>{data.homeworld || data.terrain}</p>
       <p>{data.language || data.climate}</p>
-      <p>{data.species || residentArray}</p>
+      <p>{data.species || null}</p>
+      <div>{residentArray || null}</div>
       <p>{data.population}</p>
     </div>
   )
