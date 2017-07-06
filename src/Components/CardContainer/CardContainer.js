@@ -2,12 +2,12 @@ import React from 'react'
 import css from './CardContainer.css'
 import Card from '../Card/Card'
 
-const CardContainer = ( { peopleData, planetData, view, vehicleData, handleClick  }) => {
+const CardContainer = ( { peopleData, planetData, view, vehicleData, handleClick, favorites  }) => {
   let peopleCard;
   let planetCard;
   let vehicleCard;
+  let favoriteCard;
 
-  
 
   if (peopleData && view === 'people') {
     peopleCard = peopleData.map((person, index) => {
@@ -31,9 +31,17 @@ const CardContainer = ( { peopleData, planetData, view, vehicleData, handleClick
     })
   }
 
+  if (favorites && view === 'favorites') {
+    favoriteCard = favorites.map((favorite, index) => {
+      return <Card key={index}
+                   data={favorite}
+                   handleClick={handleClick} />
+    })
+  }
+
   return (
     <div className="card-container">
-      {peopleCard || planetCard || vehicleCard}
+      {peopleCard || planetCard || vehicleCard || favoriteCard}
     </div>
   )
 }

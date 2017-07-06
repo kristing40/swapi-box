@@ -23,6 +23,7 @@ class App extends Component {
     this.handlePlanetCLick = this.handlePlanetCLick.bind(this);
     this.handleVehicleCLick = this.handleVehicleCLick.bind(this);
     this.addToFavorites = this.addToFavorites.bind(this);
+    this.handleFavoritesClick = this.handleFavoritesClick.bind(this);
   }
 
   componentDidMount() {
@@ -126,6 +127,9 @@ getVehicles() {
     this.setState({favorites: newFavoritesArray});
   }
 
+  handleFavoritesClick(){
+    this.setState({view: "favorites"});
+  }
 
   render() {
 
@@ -137,7 +141,7 @@ getVehicles() {
                   releaseDate={releaseDate}
                 />
 
-        <Header/>
+        <Header handleFavoritesClick={this.handleFavoritesClick}/>
         <ButtonContainer handlePeopleCLick={this.handlePeopleCLick}
                          handlePlanetCLick={this.handlePlanetCLick}
                          handleVehicleCLick={this.handleVehicleCLick}
@@ -146,7 +150,8 @@ getVehicles() {
                        planetData={this.state.planets}
                        view={this.state.view}
                        vehicleData={this.state.vehicles}
-                       handleClick={this.addToFavorites}/>
+                       handleClick={this.addToFavorites}
+                       favorites={this.state.favorites}/>
       </div>
     );
   }
