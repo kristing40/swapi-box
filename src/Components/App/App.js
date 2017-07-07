@@ -60,7 +60,7 @@ class App extends Component {
           .then((response) => response.json())
           .then((spec) => ({name: spec.name, language: spec.language}))
           return Promise.all([homeworld, species])
-          .then((finalResult) => ({name: e.name, homeworld: finalResult[0].name, population: finalResult[0].population, species: finalResult[1].name, language: finalResult[1].language, favorited: false}))
+          .then((finalResult) => ({name: e.name, homeworld: 'Homeworld: ' + finalResult[0].name, population:'Population: ' + finalResult[0].population, species:'Species: ' + finalResult[1].name, language:'Language: ' +  finalResult[1].language, favorited: false}))
         });
         return Promise.all(peopleArray)
       })
@@ -91,7 +91,7 @@ getPlanetData() {
           .then(data => data.json())
           .then(cleanData => cleanData.name)
       }))
-      .then(response => ({name: planet.name, terrain: planet.terrain, climate: planet.climate, population: planet.population, residents: response, favorited: false}))
+      .then(response => ({name: planet.name, terrain:'Terrain: ' + planet.terrain, climate:'Climate: ' + planet.climate, population:'Population: ' + planet.population, residents: response, favorited: false}))
     })
     return Promise.all(residentArray)
   })

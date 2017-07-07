@@ -1,5 +1,7 @@
 import React from 'react';
 import css from './Button.css';
+import PropTypes, { string, func } from 'prop-types';
+
 
 
 const Button = ({ name, handleClick }) => {
@@ -12,4 +14,10 @@ const Button = ({ name, handleClick }) => {
     </div>
   );
 }
+
+Button.propTypes = {
+  name: string,
+  handleClick: func
+}
+
 export default Button;
