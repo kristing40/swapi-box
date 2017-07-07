@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import 'whatwg-fetch';
-import Scroller from '../Scroller/Scroller'
-import Header from '../Header/Header'
-import ButtonContainer from '../ButtonContainer/ButtonContainer'
-import CardContainer from '../CardContainer/CardContainer'
+import Scroller from '../Scroller/Scroller';
+import Header from '../Header/Header';
+import ButtonContainer from '../ButtonContainer/ButtonContainer';
+import CardContainer from '../CardContainer/CardContainer';
 
 class App extends Component {
   constructor (){
@@ -40,7 +40,11 @@ class App extends Component {
 
   componentDidMount() {
     const ranNum = this.randomNumberGenerator(1, 7);
-    this.fetchScroller(ranNum)
+    this.fetchScroller(ranNum);
+  }
+
+  fetchPeopleHelper(url) {
+
   }
 
   getPeopleData() {
@@ -56,14 +60,14 @@ class App extends Component {
           .then((spec) => ({name: spec.name, language: spec.language}))
           return Promise.all([homeworld, species])
           .then((finalResult) => ({name: e.name, homeworld: finalResult[0].name, population: finalResult[0].population, species: finalResult[1].name, language: finalResult[1].language, favorited: false}))
-        })
+        });
         return Promise.all(peopleArray)
       })
   }
 
-  handlePeopleCLick(promise) {
+  handlePeopleCLick() {
     if (this.state.people.length > 0) {
-      this.setState({view: 'people'})
+      this.setState({view: 'people'});
       return
     }
 
@@ -72,8 +76,8 @@ class App extends Component {
         this.setState({
           people: response,
           view: 'people'
-        })
-      })
+        });
+      });
   }
 
 getPlanetData() {
@@ -94,7 +98,7 @@ getPlanetData() {
 
 handlePlanetCLick() {
   if (this.state.planets.length > 0) {
-    this.setState({view: 'planets'})
+    this.setState({view: 'planets'});
     return
   }
   this.getPlanetData()
@@ -103,7 +107,7 @@ handlePlanetCLick() {
         planets: planetsData,
         view: 'planets'
        });
-    })
+    });
 }
 
 getVehicles() {
@@ -121,16 +125,16 @@ getVehicles() {
         class: vehicle.vehicle_class,
         passengers: vehicle.passengers,
         favorited: false
-      })
-    })
+      });
+    });
     return cleanedVehicles;
   })
   .then((cleanedVehicles) => {
     this.setState({
       vehicles: cleanedVehicles,
       view: 'vehicles'
-    })
-   })
+    });
+  });
   }
 
   handleVehicleCLick() {
@@ -145,7 +149,7 @@ getVehicles() {
       });
       this.setState({favorites: newFavoritesArray});
     } else {
-      data.favorited = true
+      data.favorited = true;
     }
   }
 
@@ -154,15 +158,15 @@ getVehicles() {
   }
 
   handleFavoritesClick() {
-    const newPeople = this.state.people.filter(this.filterFavoritedHelper)
-    const newPlanet = this.state.planets.filter(this.filterFavoritedHelper)
-    const newVehicles = this.state.vehicles.filter(this.filterFavoritedHelper)
+    const newPeople = this.state.people.filter(this.filterFavoritedHelper);
+    const newPlanet = this.state.planets.filter(this.filterFavoritedHelper);
+    const newVehicles = this.state.vehicles.filter(this.filterFavoritedHelper);
 
     const newFavorites = [
       ...newVehicles,
       ...newPlanet,
       ...newPeople
-    ]
+    ];
 
     this.setState({
       view: "favorites",
