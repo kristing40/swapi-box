@@ -10,15 +10,35 @@ body {
   height: 100%;
   width: 25%;
 }
+
 .scroller-txt {
-  padding-top: 40px;
 }
 
 .scroller-txt,
 .scroller-title,
 .release-date {
   color: #dba622;
-  font-size: 18px;
   line-height: 30px;
   width: 85%;
+}
+
+.scroller-txt {
+   font-size: 18px;
+}
+
+.scroller-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.release-date {
+  margin-top: 0;
+ font-size: 20px;
+}
+
+.scroller-title,
+.release-date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
