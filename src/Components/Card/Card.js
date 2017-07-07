@@ -13,9 +13,7 @@ const Card = ({ data, addToFavorites }) => {
 
   return (
     <div className="card">
-      <button className="card-fav-btn" onClick={(e) => addToFavorites(data)}>
-        Fav
-      </button>
+      <button className="card-fav-btn" onClick={(e) => addToFavorites(data)}></button>
       <p>{data.name}</p>
       <p>{data.homeworld || data.terrain || data.model}</p>
       <p>{data.population || data.class}</p>

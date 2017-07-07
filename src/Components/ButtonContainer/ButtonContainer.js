@@ -15,8 +15,7 @@ const ButtonContainer = ({
       <Button name="People" handleClick={ handlePeopleCLick } />
       <Button name="Planets"  handleClick={ handlePlanetCLick }/>
       <Button name="Vehicles" handleClick={ handleVehicleCLick } />
-      <Button handleClick={handleFavoritesClick} name="Favorites"/>
-
+      <Button name="Favorites" handleClick={ handleFavoritesClick } />
     </div>
   );
 }

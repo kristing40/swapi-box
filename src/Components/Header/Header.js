@@ -1,8 +1,7 @@
 import React from 'react';
 import css from './Header.css';
-import Button from '../Button/Button';
 
-const Header = ({ handleFavoritesClick }) =>{
+const Header = () =>{
   return (
     <div className="header-container">
       <h1>SWAPI BOX</h1>
