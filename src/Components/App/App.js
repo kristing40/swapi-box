@@ -179,25 +179,27 @@ getVehicles() {
     let { scrollerText, scrollerTitle, releaseDate } = this.state;
 
     return (
-      <div>
+      <div className='app-body'>
         <Scroller scrollerText={scrollerText}
                   scrollerTitle={scrollerTitle}
                   releaseDate={releaseDate} />
 
-        <Header/>
+        <main>
+          <Header/>
 
-        <ButtonContainer handlePeopleCLick={this.handlePeopleCLick}
-                         handlePlanetCLick={this.handlePlanetCLick}
-                         handleVehicleCLick={this.handleVehicleCLick}
-                         handleFavoritesClick={this.handleFavoritesClick}
-                         />
+          <ButtonContainer handlePeopleCLick={this.handlePeopleCLick}
+                           handlePlanetCLick={this.handlePlanetCLick}
+                           handleVehicleCLick={this.handleVehicleCLick}
+                           handleFavoritesClick={this.handleFavoritesClick}
+                           />
 
-        <CardContainer peopleData={this.state.people}
-                       planetData={this.state.planets}
-                       view={this.state.view}
-                       vehicleData={this.state.vehicles}
-                       addToFavorites={this.addToFavorites}
-                       favorites={this.state.favorites} />
+          <CardContainer peopleData={this.state.people}
+                         planetData={this.state.planets}
+                         view={this.state.view}
+                         vehicleData={this.state.vehicles}
+                         addToFavorites={this.addToFavorites}
+                         favorites={this.state.favorites} />
+        </main>
       </div>
     );
   }
