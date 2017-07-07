@@ -5,9 +5,7 @@ import Button from '../Button/Button';
 const Header = ({ handleFavoritesClick }) =>{
   return (
     <div className="header-container">
-      <h1>SWAPI_Box</h1>
-      <Button handleClick={handleFavoritesClick}
-              name="Favorites"/>
+      <h1>SWAPI BOX</h1>
     </div>
   );
 }

@@ -4,7 +4,7 @@ body {
 .scroller {
   display: flex;
   justify-content: center;
-  align-content: center;
+  align-items: center;
   flex-direction: column;
   float: left;
   height: 100%;
@@ -12,7 +12,14 @@ body {
 
 }
 .scroller-txt {
+  padding-top: 40px;
+}
+
+.scroller-txt,
+.scroller-title,
+.release-date {
+  color: #dba622;
   font-size: 18px;
   line-height: 30px;
-  width: 255px;
+  width: 85%;
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import './normalize.css';
 import 'whatwg-fetch';
 import Scroller from '../Scroller/Scroller';
 import Header from '../Header/Header';
