@@ -1,6 +1,6 @@
 import React from 'react';
 import css from './Card.css';
-// import PropTypes from 'prop-types';
+import PropTypes, { object, func } from 'prop-types';
 
 const Card = ({ data, addToFavorites }) => {
   let residentArray;
@@ -27,4 +27,8 @@ const Card = ({ data, addToFavorites }) => {
   );
 }
 
+Card.propTypes = {
+  data: object,
+  addToFavorites: func
+}
 export default Card;
