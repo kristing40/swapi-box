@@ -25,6 +25,10 @@ const CardContainer = ({ peopleData,
   if (peopleData && view === 'people') {
     peopleCard = peopleData.map(mapCardsCallback);
   }
+
+  if (peopleData && view === 'people') {
+    peopleCard = peopleData.map(mapCardsCallback);
+  }
   if (planetData && view === 'planets') {
     planetCard = planetData.map(mapCardsCallback);
   }
