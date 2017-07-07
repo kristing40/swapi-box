@@ -1,5 +1,5 @@
-import React from 'react'
-import css from './Scroller.css'
+import React from 'react';
+import css from './Scroller.css';
 
 const Scroller = ({ scrollerText, scrollerTitle, releaseDate }) => {
   return (
@@ -8,7 +8,7 @@ const Scroller = ({ scrollerText, scrollerTitle, releaseDate }) => {
       <p className="scroller-title">{scrollerTitle}</p>
       <p className="release-date">{releaseDate}</p>
     </div>
-  )
+  );
 }
 
 export default Scroller;

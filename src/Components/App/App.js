@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import 'whatwg-fetch';
-import Scroller from '../Scroller/Scroller'
-import Header from '../Header/Header'
-import ButtonContainer from '../ButtonContainer/ButtonContainer'
-import CardContainer from '../CardContainer/CardContainer'
+import Scroller from '../Scroller/Scroller';
+import Header from '../Header/Header';
+import ButtonContainer from '../ButtonContainer/ButtonContainer';
+import CardContainer from '../CardContainer/CardContainer';
 
 class App extends Component {
   constructor (){
@@ -13,11 +13,11 @@ class App extends Component {
       scrollerText: '',
       scrollerTitle: '',
       releaseDate: '',
+      view: '',
       people: [],
       planets: [],
       vehicles: [],
-      favorites: [],
-      view: ''
+      favorites: []
     }
     this.handlePeopleCLick = this.handlePeopleCLick.bind(this);
     this.handlePlanetCLick = this.handlePlanetCLick.bind(this);
@@ -26,19 +26,25 @@ class App extends Component {
     this.handleFavoritesClick = this.handleFavoritesClick.bind(this);
   }
 
-  componentDidMount() {
-    const ranNum = this.randomNumberGenerator(1, 7);
+  randomNumberGenerator(min, max) {
+      return Math.floor(Math.random() * (max - min + 1) + min);
+  }
 
-    fetch('http://swapi.co/api/films/' + ranNum + '/')
+  fetchScroller(randomNumber) {
+    fetch('http://swapi.co/api/films/' + randomNumber + '/')
       .then((response) => response.json())
       .then((responseData) => {
         this.setState({scrollerText: responseData.opening_crawl, scrollerTitle: responseData.title, releaseDate: responseData.release_date})
       });
-
   }
 
-  randomNumberGenerator(min, max) {
-      return Math.floor(Math.random() * (max - min + 1) + min);
+  componentDidMount() {
+    const ranNum = this.randomNumberGenerator(1, 7);
+    this.fetchScroller(ranNum);
+  }
+
+  fetchPeopleHelper(url) {
+
   }
 
   getPeopleData() {
@@ -54,14 +60,14 @@ class App extends Component {
           .then((spec) => ({name: spec.name, language: spec.language}))
           return Promise.all([homeworld, species])
           .then((finalResult) => ({name: e.name, homeworld: finalResult[0].name, population: finalResult[0].population, species: finalResult[1].name, language: finalResult[1].language, favorited: false}))
-        })
+        });
         return Promise.all(peopleArray)
       })
   }
 
-  handlePeopleCLick(promise) {
+  handlePeopleCLick() {
     if (this.state.people.length > 0) {
-      this.setState({view: 'people'})
+      this.setState({view: 'people'});
       return
     }
 
@@ -70,8 +76,8 @@ class App extends Component {
         this.setState({
           people: response,
           view: 'people'
-        })
-      })
+        });
+      });
   }
 
 getPlanetData() {
@@ -92,7 +98,7 @@ getPlanetData() {
 
 handlePlanetCLick() {
   if (this.state.planets.length > 0) {
-    this.setState({view: 'planets'})
+    this.setState({view: 'planets'});
     return
   }
   this.getPlanetData()
@@ -101,7 +107,7 @@ handlePlanetCLick() {
         planets: planetsData,
         view: 'planets'
        });
-    })
+    });
 }
 
 getVehicles() {
@@ -119,16 +125,16 @@ getVehicles() {
         class: vehicle.vehicle_class,
         passengers: vehicle.passengers,
         favorited: false
-      })
-    })
+      });
+    });
     return cleanedVehicles;
   })
   .then((cleanedVehicles) => {
     this.setState({
       vehicles: cleanedVehicles,
       view: 'vehicles'
-    })
-   })
+    });
+  });
   }
 
   handleVehicleCLick() {
@@ -143,40 +149,24 @@ getVehicles() {
       });
       this.setState({favorites: newFavoritesArray});
     } else {
-      data.favorited = true
+      data.favorited = true;
     }
-
-    console.log(data);
-    // this.deleteFavorites(data)
-    // const newObject = Object.assign(data, {favorites: true})
-    // const newFavoritesArray = Array.from(this.state.favorites);
-    // newFavoritesArray.push(data);
-    // this.setState({favorites: newFavoritesArray});
   }
 
+  filterFavoritedHelper(favorite) {
+    return favorite.favorited === true;
+  }
 
+  handleFavoritesClick() {
+    const newPeople = this.state.people.filter(this.filterFavoritedHelper);
+    const newPlanet = this.state.planets.filter(this.filterFavoritedHelper);
+    const newVehicles = this.state.vehicles.filter(this.filterFavoritedHelper);
 
-  // deleteFavorites(data) {
-  //   if (this.state.favorites.find(data).favorites) {
-  //     this.state.favorites.filter(favorite => {
-  //       delete data.favorites
-  //       return data.name !== favorite.name
-  //     })
-  //   }
-  // }
-
-
-  handleFavoritesClick(){
-    const newPeople = this.state.people.filter(person => person.favorited === true)
-    const newPlanet = this.state.planets.filter(planet => planet.favorited === true)
-    const newVehicles = this.state.vehicles.filter(vehicle => vehicle.favorited === true)
-
-    console.log(newVehicles);
-    console.log(newPlanet);
-    console.log(newPeople);
-
-    const newFavorites = [...newVehicles, ...newPlanet, ...newPeople]
-    console.log('new favorites', newFavorites);
+    const newFavorites = [
+      ...newVehicles,
+      ...newPlanet,
+      ...newPeople
+    ];
 
     this.setState({
       view: "favorites",
@@ -185,26 +175,26 @@ getVehicles() {
   }
 
   render() {
+    let { scrollerText, scrollerTitle, releaseDate } = this.state;
 
-   let { scrollerText, scrollerTitle, releaseDate } = this.state;
     return (
       <div>
-        <Scroller scrollerText={ scrollerText}
+        <Scroller scrollerText={scrollerText}
                   scrollerTitle={scrollerTitle}
-                  releaseDate={releaseDate}
-                />
+                  releaseDate={releaseDate} />
 
-        <Header handleFavoritesClick={this.handleFavoritesClick}/>
+        <Header handleFavoritesClick={this.handleFavoritesClick} />
+
         <ButtonContainer handlePeopleCLick={this.handlePeopleCLick}
                          handlePlanetCLick={this.handlePlanetCLick}
-                         handleVehicleCLick={this.handleVehicleCLick}
-                       />
+                         handleVehicleCLick={this.handleVehicleCLick} />
+
         <CardContainer peopleData={this.state.people}
                        planetData={this.state.planets}
                        view={this.state.view}
                        vehicleData={this.state.vehicles}
-                       handleClick={this.addToFavorites}
-                       favorites={this.state.favorites}/>
+                       addToFavorites={this.addToFavorites}
+                       favorites={this.state.favorites} />
       </div>
     );
   }
