@@ -19,7 +19,10 @@ const Card = ({ data, addToFavorites }) => {
       <p>{data.population || data.class}</p>
       <p>{data.language || data.climate || data.passengers}</p>
       <p>{data.species || null }</p>
-      <div>{residentArray || null}</div>
+      <div>
+        {data.residents ? <p>Residents: </p> : null}
+        {residentArray || null}
+      </div>
     </div>
   );
 }

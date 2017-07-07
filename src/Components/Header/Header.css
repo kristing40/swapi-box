@@ -4,9 +4,8 @@ body {
 
 .header-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
   width: 75%;
+  margin: 0 auto;
 }
 .header-title {
   font-size: 75px;
