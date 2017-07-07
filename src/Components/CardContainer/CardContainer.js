@@ -1,50 +1,50 @@
-import React from 'react'
-import css from './CardContainer.css'
-import Card from '../Card/Card'
+import React from 'react';
+import css from './CardContainer.css';
+import Card from '../Card/Card';
 
-const CardContainer = ( { peopleData, planetData, view, vehicleData, handleClick, favorites  }) => {
+const CardContainer = ({ peopleData,
+                         planetData,
+                         vehicleData,
+                         favorites,
+                         view,
+                         addToFavorites }) => {
+
   let peopleCard;
   let planetCard;
   let vehicleCard;
   let favoriteCard;
 
+  const mapCardsCallback = (cardData, index) => {
+    return (
+      <Card key={index}
+            data={cardData}
+            addToFavorites={addToFavorites} />
+    );
+  }
+
   if (peopleData && view === 'people') {
-    peopleCard = peopleData.map((person, index) => {
-      return <Card key={index}
-                   data={person}
-                   handleClick={handleClick} />
-    })
+    peopleCard = peopleData.map(mapCardsCallback);
   }
   if (planetData && view === 'planets') {
-    planetCard = planetData.map((planet, index) => {
-      return <Card key={index}
-                   data={planet}
-                   handleClick={handleClick} />
-    })
+    planetCard = planetData.map(mapCardsCallback);
   }
   if (vehicleData && view === 'vehicles') {
-    vehicleCard = vehicleData.map((vehicle, index) => {
-      return <Card key={index}
-                   data={vehicle}
-                   handleClick={handleClick} />
-    })
+    vehicleCard = vehicleData.map(mapCardsCallback);
+  }
+  if (favorites && view === 'favorites') {
+    favoriteCard = favorites.map(mapCardsCallback);
   }
 
-  if (favorites && view === 'favorites') {
-    favoriteCard = favorites.map((favorite, index) => {
-      return <Card key={index}
-                   data={favorite}
-                   handleClick={handleClick} />
-    })
+  if (favorites.length === 0
+      && view === 'favorites') {
 
-  if (favorites.length === 0 && view === 'favorites')
     return (
       <div className='card-container'>
         <h1 className="favorites-empty">
           Choose Favorites you must, Yung-Padewon.
         </h1>
       </div>
-    )
+    );
   }
 
   return (
@@ -54,7 +54,7 @@ const CardContainer = ( { peopleData, planetData, view, vehicleData, handleClick
         vehicleCard ||
         favoriteCard }
     </div>
-  )
+  );
 }
 
 export default CardContainer;

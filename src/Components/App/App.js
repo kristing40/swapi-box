@@ -145,38 +145,22 @@ getVehicles() {
     } else {
       data.favorited = true
     }
-
-    console.log(data);
-    // this.deleteFavorites(data)
-    // const newObject = Object.assign(data, {favorites: true})
-    // const newFavoritesArray = Array.from(this.state.favorites);
-    // newFavoritesArray.push(data);
-    // this.setState({favorites: newFavoritesArray});
   }
 
+  filterFavoritedHelper(favorite) {
+    return favorite.favorited === true;
+  }
 
+  handleFavoritesClick() {
+    const newPeople = this.state.people.filter(this.filterFavoritedHelper)
+    const newPlanet = this.state.planets.filter(this.filterFavoritedHelper)
+    const newVehicles = this.state.vehicles.filter(this.filterFavoritedHelper)
 
-  // deleteFavorites(data) {
-  //   if (this.state.favorites.find(data).favorites) {
-  //     this.state.favorites.filter(favorite => {
-  //       delete data.favorites
-  //       return data.name !== favorite.name
-  //     })
-  //   }
-  // }
-
-
-  handleFavoritesClick(){
-    const newPeople = this.state.people.filter(person => person.favorited === true)
-    const newPlanet = this.state.planets.filter(planet => planet.favorited === true)
-    const newVehicles = this.state.vehicles.filter(vehicle => vehicle.favorited === true)
-
-    console.log(newVehicles);
-    console.log(newPlanet);
-    console.log(newPeople);
-
-    const newFavorites = [...newVehicles, ...newPlanet, ...newPeople]
-    console.log('new favorites', newFavorites);
+    const newFavorites = [
+      ...newVehicles,
+      ...newPlanet,
+      ...newPeople
+    ]
 
     this.setState({
       view: "favorites",
@@ -185,26 +169,26 @@ getVehicles() {
   }
 
   render() {
+    let { scrollerText, scrollerTitle, releaseDate } = this.state;
 
-   let { scrollerText, scrollerTitle, releaseDate } = this.state;
     return (
       <div>
-        <Scroller scrollerText={ scrollerText}
+        <Scroller scrollerText={scrollerText}
                   scrollerTitle={scrollerTitle}
-                  releaseDate={releaseDate}
-                />
+                  releaseDate={releaseDate} />
 
-        <Header handleFavoritesClick={this.handleFavoritesClick}/>
+        <Header handleFavoritesClick={this.handleFavoritesClick} />
+
         <ButtonContainer handlePeopleCLick={this.handlePeopleCLick}
                          handlePlanetCLick={this.handlePlanetCLick}
-                         handleVehicleCLick={this.handleVehicleCLick}
-                       />
+                         handleVehicleCLick={this.handleVehicleCLick} />
+
         <CardContainer peopleData={this.state.people}
                        planetData={this.state.planets}
                        view={this.state.view}
                        vehicleData={this.state.vehicles}
-                       handleClick={this.addToFavorites}
-                       favorites={this.state.favorites}/>
+                       addToFavorites={this.addToFavorites}
+                       favorites={this.state.favorites} />
       </div>
     );
   }

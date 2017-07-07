@@ -1,8 +1,0 @@
-body {
-  box-sizing: border-box;
-}
-.favorites {
-  display: flex;
-  justify-content: flex-end;
-  align-content: flex-end;
-}
