@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import './normalize.css';
 import 'whatwg-fetch';
 import Scroller from '../Scroller/Scroller';
 import Header from '../Header/Header';
@@ -183,11 +184,13 @@ getVehicles() {
                   scrollerTitle={scrollerTitle}
                   releaseDate={releaseDate} />
 
-        <Header handleFavoritesClick={this.handleFavoritesClick} />
+        <Header/>
 
         <ButtonContainer handlePeopleCLick={this.handlePeopleCLick}
                          handlePlanetCLick={this.handlePlanetCLick}
-                         handleVehicleCLick={this.handleVehicleCLick} />
+                         handleVehicleCLick={this.handleVehicleCLick}
+                         handleFavoritesClick={this.handleFavoritesClick}
+                         />
 
         <CardContainer peopleData={this.state.people}
                        planetData={this.state.planets}

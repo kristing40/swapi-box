@@ -1,4 +1,8 @@
 /*APP COMPONENT RELATED CSS GOES HERE*/
 body {
   box-sizing: border-box;
+  background-color: #670404;
+  -moz-box-shadow:    inset 0 0 10px #000000;
+  -webkit-box-shadow: inset 0 0 10px #000000;
+  box-shadow:         inset 0 0 10px #000000;
 }

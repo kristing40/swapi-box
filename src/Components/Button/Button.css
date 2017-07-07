@@ -9,6 +9,8 @@ body {
 }
 
 .btn {
+  background-color: #0b0b0b;
+  color: #C0C0C0;
   height: 30px;
   width: 90px;
   margin: 8px;

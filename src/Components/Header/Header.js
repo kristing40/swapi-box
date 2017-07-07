@@ -1,13 +1,10 @@
 import React from 'react';
 import css from './Header.css';
-import Button from '../Button/Button';
 
-const Header = ({ handleFavoritesClick }) =>{
+const Header = () =>{
   return (
     <div className="header-container">
-      <h1>SWAPI_Box</h1>
-      <Button handleClick={handleFavoritesClick}
-              name="Favorites"/>
+      <h1>SWAPI BOX</h1>
     </div>
   );
 }
