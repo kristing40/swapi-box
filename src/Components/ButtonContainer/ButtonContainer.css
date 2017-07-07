@@ -3,6 +3,8 @@ body {
 }
 .button-container {
   display: flex;
+  justify-content: center;
+  
   height: 60px;
   width: 75%;
   margin: 0 auto;

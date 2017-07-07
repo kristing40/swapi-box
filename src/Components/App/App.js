@@ -122,9 +122,9 @@ getVehicles() {
     const cleanedVehicles = vehicleResponse.results.map((vehicle) => {
       return ({
         name: vehicle.name,
-        model:vehicle.model,
-        class: vehicle.vehicle_class,
-        passengers: vehicle.passengers,
+        model: 'Vehicle: ' + vehicle.model,
+        class:'Class: ' + vehicle.vehicle_class,
+        passengers:'Passengers: ' + vehicle.passengers,
         favorited: false
       });
     });
