@@ -7,8 +7,6 @@ const Scroller = ({ scrollerText, scrollerTitle, releaseDate }) => {
       <p className="scroller-title">{scrollerTitle}</p>
       <p className="release-date">{releaseDate}</p>
       <p className="scroller-txt">{scrollerText}</p>
-
-
     </div>
   );
 }
