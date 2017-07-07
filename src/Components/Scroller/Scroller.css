@@ -1,6 +1,7 @@
 body {
   box-sizing: border-box;
 }
+
 .scroller {
   display: flex;
   justify-content: center;
@@ -9,6 +10,8 @@ body {
   float: left;
   height: 100%;
   width: 25%;
+  overflow: hidden;
+  perspective: 400px;
 }
 
 .scroller-txt {
@@ -29,6 +32,8 @@ body {
 .scroller-title {
   font-size: 24px;
   font-weight: bold;
+  margin-bottom: 1px;
+  margin-top: 50px;
 }
 
 .release-date {
