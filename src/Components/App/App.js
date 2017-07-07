@@ -13,11 +13,11 @@ class App extends Component {
       scrollerText: '',
       scrollerTitle: '',
       releaseDate: '',
+      view: '',
       people: [],
       planets: [],
       vehicles: [],
-      favorites: [],
-      view: ''
+      favorites: []
     }
     this.handlePeopleCLick = this.handlePeopleCLick.bind(this);
     this.handlePlanetCLick = this.handlePlanetCLick.bind(this);
@@ -26,19 +26,21 @@ class App extends Component {
     this.handleFavoritesClick = this.handleFavoritesClick.bind(this);
   }
 
-  componentDidMount() {
-    const ranNum = this.randomNumberGenerator(1, 7);
+  randomNumberGenerator(min, max) {
+      return Math.floor(Math.random() * (max - min + 1) + min);
+  }
 
-    fetch('http://swapi.co/api/films/' + ranNum + '/')
+  fetchScroller(randomNumber) {
+    fetch('http://swapi.co/api/films/' + randomNumber + '/')
       .then((response) => response.json())
       .then((responseData) => {
         this.setState({scrollerText: responseData.opening_crawl, scrollerTitle: responseData.title, releaseDate: responseData.release_date})
       });
-
   }
 
-  randomNumberGenerator(min, max) {
-      return Math.floor(Math.random() * (max - min + 1) + min);
+  componentDidMount() {
+    const ranNum = this.randomNumberGenerator(1, 7);
+    this.fetchScroller(ranNum)
   }
 
   getPeopleData() {
