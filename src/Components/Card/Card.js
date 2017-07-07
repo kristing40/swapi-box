@@ -17,7 +17,9 @@ const Card = ({ data, addToFavorites }) => {
       <p className="card-name">{data.name}</p>
       <p>{data.homeworld || data.terrain || data.model}</p>
       <p>{data.population || data.class}</p>
-      <p>{data.language || data.climate || data.passengers}</p>
+      <p>
+        {data.language || data.climate || data.passengers}
+      </p>
       <p>{data.species || null }</p>
       <div>
         {data.residents ? <p>Residents: </p> : null}
