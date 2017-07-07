@@ -7,7 +7,6 @@ const CardContainer = ( { peopleData, planetData, view, vehicleData, handleClick
   let planetCard;
   let vehicleCard;
   let favoriteCard;
-  let emptyFavorites = <h1>Choose some fav's</h1>
 
   if (peopleData && view === 'people') {
     peopleCard = peopleData.map((person, index) => {
@@ -37,12 +36,23 @@ const CardContainer = ( { peopleData, planetData, view, vehicleData, handleClick
                    data={favorite}
                    handleClick={handleClick} />
     })
+
+  if (favorites.length === 0 && view === 'favorites')
+    return (
+      <div className='card-container'>
+        <h1 className="favorites-empty">
+          Choose Favorites you must, Yung-Padewon.
+        </h1>
+      </div>
+    )
   }
 
   return (
     <div className="card-container">
-      {peopleCard || planetCard || vehicleCard}
-      {favorites.length && view === "favorites" > 0 ? favoriteCard : emptyFavorites}
+      {  peopleCard ||
+         planetCard ||
+        vehicleCard ||
+        favoriteCard }
     </div>
   )
 }
