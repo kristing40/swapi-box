@@ -28,7 +28,7 @@ const CardContainer = ({ peopleData,
   if (planetData && view === 'planets') {
     planetCard = planetData.map(mapCardsCallback);
   }
-  
+
   if (vehicleData && view === 'vehicles') {
     vehicleCard = vehicleData.map(mapCardsCallback);
   }
@@ -50,6 +50,7 @@ const CardContainer = ({ peopleData,
 
   return (
     <div className="card-container">
+      <p className='card-view'>{view.toUpperCase()}</p>
       {  peopleCard ||
          planetCard ||
         vehicleCard ||

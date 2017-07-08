@@ -16,3 +16,10 @@
   font-weight: bold;
   text-shadow: 1px 1px 2px black, 0 0 25px #dba622, 0 0 5px #dba622;
 }
+
+.card-view {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+}
