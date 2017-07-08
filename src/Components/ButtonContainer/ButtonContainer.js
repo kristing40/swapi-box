@@ -7,7 +7,7 @@ const ButtonContainer = ({
     handlePeopleCLick,
     handlePlanetCLick,
     handleVehicleCLick,
-    handleFavoritesClick
+    handleFavoritesClick,
 
  }) => {
 

@@ -6,6 +6,7 @@ import Scroller from '../Scroller/Scroller';
 import Header from '../Header/Header';
 import ButtonContainer from '../ButtonContainer/ButtonContainer';
 import CardContainer from '../CardContainer/CardContainer';
+const $ = require('jquery');
 
 class App extends Component {
   constructor (){
@@ -25,6 +26,7 @@ class App extends Component {
     this.handleVehicleCLick = this.handleVehicleCLick.bind(this);
     this.addToFavorites = this.addToFavorites.bind(this);
     this.handleFavoritesClick = this.handleFavoritesClick.bind(this);
+    this.changeFavoritedImageClick = this.changeFavoritedImageClick.bind(this);
   }
 
   randomNumberGenerator(min, max) {
@@ -42,10 +44,6 @@ class App extends Component {
   componentDidMount() {
     const ranNum = this.randomNumberGenerator(1, 7);
     this.fetchScroller(ranNum);
-  }
-
-  fetchPeopleHelper(url) {
-
   }
 
   getPeopleData() {
@@ -151,6 +149,7 @@ getVehicles() {
       this.setState({favorites: newFavoritesArray});
     } else {
       data.favorited = true;
+      this.changeFavoritedImageClick();
     }
   }
 
@@ -173,6 +172,12 @@ getVehicles() {
       view: "favorites",
       favorites: newFavorites
     });
+  }
+
+  changeFavoritedImageClick() {
+    // $(".card-unfav-btn").click(function() {
+    //     $("p").toggleClass(".card-fav-btn");
+    //   }
   }
 
   render() {
@@ -198,7 +203,8 @@ getVehicles() {
                          view={this.state.view}
                          vehicleData={this.state.vehicles}
                          addToFavorites={this.addToFavorites}
-                         favorites={this.state.favorites} />
+                         favorites={this.state.favorites}
+                       />
         </main>
       </div>
     );
