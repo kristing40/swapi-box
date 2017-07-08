@@ -141,6 +141,7 @@ getVehicles() {
   }
 
   addToFavorites(data) {
+    console.log(data);
     if (data.favorited === true) {
       data.favorited = false;
       const newFavoritesArray = this.state.favorites.filter(favorite => {
@@ -195,16 +196,14 @@ getVehicles() {
           <ButtonContainer handlePeopleCLick={this.handlePeopleCLick}
                            handlePlanetCLick={this.handlePlanetCLick}
                            handleVehicleCLick={this.handleVehicleCLick}
-                           handleFavoritesClick={this.handleFavoritesClick}
-                           />
+                           handleFavoritesClick={this.handleFavoritesClick} />
 
           <CardContainer peopleData={this.state.people}
                          planetData={this.state.planets}
                          view={this.state.view}
                          vehicleData={this.state.vehicles}
                          addToFavorites={this.addToFavorites}
-                         favorites={this.state.favorites}
-                       />
+                         favorites={this.state.favorites} />
         </main>
       </div>
     );
