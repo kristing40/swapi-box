@@ -14,7 +14,7 @@ body {
           box-shadow: 0 8px 6px -6px black;
 }
 .card-fav-btn {
-  background: url(star.png);
+  background: url(../images/goldstar.png);
   background-size: cover;
   border-style: none;
   float: right;
