@@ -15,14 +15,14 @@ const Card = ({ data, addToFavorites }) => {
     <div className="card">
       <button className="card-fav-btn" onClick={(e) => addToFavorites(data)}></button>
       <p className="card-name">{data.name}</p>
-      <p>{data.homeworld || data.terrain || data.model}</p>
-      <p>{data.population || data.class}</p>
-      <p>
+      <p className="card-category">{data.homeworld || data.terrain || data.model}</p>
+      <p className="card-category">{data.population || data.class}</p>
+      <p className="card-category">
         {data.language || data.climate || data.passengers}
       </p>
-      <p>{data.species || null }</p>
+      <p className="card-category">{data.species || null }</p>
       <div>
-        {data.residents ? <p>Residents: </p> : null}
+        {data.residents ? <p className="card-category">Residents: </p> : null}
         {residentArray || null}
       </div>
     </div>

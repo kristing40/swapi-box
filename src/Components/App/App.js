@@ -44,10 +44,6 @@ class App extends Component {
     this.fetchScroller(ranNum);
   }
 
-  fetchPeopleHelper(url) {
-
-  }
-
   getPeopleData() {
     return fetch('http://swapi.co/api/people/')
       .then((response) => response.json())
@@ -173,6 +169,9 @@ getVehicles() {
       view: "favorites",
       favorites: newFavorites
     });
+  }
+
+  changeFavoritedImage() {
   }
 
   render() {
