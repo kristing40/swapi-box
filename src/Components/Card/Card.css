@@ -20,8 +20,17 @@ body {
   border-bottom: 1px solid dimgrey;
 }
 
-.card-fav-btn {
+.card-unfav-btn {
   background: url(../images/goldstar.png);
+  background-size: cover;
+  border-style: none;
+  float: right;
+  height: 35px;
+  padding: 5px;
+  width: 35px;
+}
+.card-fav-btn {
+  background: url(../images/silverstar.png);
   background-size: cover;
   border-style: none;
   float: right;

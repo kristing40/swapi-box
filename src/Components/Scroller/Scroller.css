@@ -1,4 +1,5 @@
-body {
+body,
+html {
   box-sizing: border-box;
   height: 100%;
   width: 100%;
@@ -12,9 +13,9 @@ body {
   flex-direction: column;
   overflow: hidden;
   padding: 10px;
-  height: 100vh;
+  height: 200%;
   width: 25%;
-  perspective: 1000px;
+  perspective: 1500px;
   text-align: justify;
 }
 
@@ -26,11 +27,11 @@ body {
 }
 
 .scroller-txt {
-   font-size: 23px;
+  font-size: 170%;
 }
 
 .scroller-title {
-  font-size: 28px;
+  font-size: 250%;
   font-weight: bold;
   margin-bottom: 1px;
   margin-top: 50px;
@@ -39,7 +40,7 @@ body {
 
 .release-date {
   margin-top: 0;
-  font-size: 24px;
+  font-size: 210%;
 }
 
 .scroller-title,
@@ -52,8 +53,8 @@ body {
 .crawl {
    position: relative;
    top: -100px;
-   transform-origin: 50% 100%;
-   animation: 60s crawl linear infinite;
+   transform-origin: 70% 100%;
+   animation: 20s crawl linear infinite;
 }
 
 @keyframes crawl {
@@ -62,7 +63,7 @@ body {
     transform: rotateX(20deg) translateZ(0);
   }
   100% {
-    top: -6000px;
+    top: -5000px;
     transform: rotateX(25deg) translateZ(-2500px);
   }
 }
