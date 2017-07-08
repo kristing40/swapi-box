@@ -150,7 +150,9 @@ getVehicles() {
       this.setState({favorites: newFavoritesArray});
     } else {
       data.favorited = true;
-      this.changeFavoritedImageClick();
+      const newFavoritesArray = Array.from(this.state.favorites);
+      newFavoritesArray.push(data);
+      this.setState({favorites: newFavoritesArray});
     }
   }
 

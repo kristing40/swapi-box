@@ -11,9 +11,14 @@ const Card = ({ data, addToFavorites }) => {
     });
   }
 
+  const addFavClass = (data) => {
+    return data.favorited === true ? 'card-fav-btn' : 'card-unfav-btn';
+  }
+
   return (
     <div className="card">
-      <button className="card-unfav-btn" onClick={(e) => addToFavorites(data)}></button>
+      <button className={addFavClass(data)} onClick={(e) =>
+          addToFavorites(data)}></button>
       <p className="card-name">{data.name}</p>
       <p className="card-category">{data.homeworld || data.terrain || data.model}</p>
       <p className="card-category">{data.population || data.class}</p>
