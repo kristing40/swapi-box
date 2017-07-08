@@ -52,9 +52,9 @@ html {
 
 .crawl {
    position: relative;
-   top: -100px;
+   top: 0;
    transform-origin: 70% 100%;
-   animation: 20s crawl linear infinite;
+   animation: 30s crawl linear infinite;
 }
 
 @keyframes crawl {
