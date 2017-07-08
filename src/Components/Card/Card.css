@@ -13,8 +13,15 @@ body {
      -moz-box-shadow: 0 8px 6px -6px black;
           box-shadow: 0 8px 6px -6px black;
 }
-.card-fav-btn {
-  background: url(star.png);
+
+.card-name {
+  font-size: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid dimgrey;
+}
+
+.card-unfav-btn {
+  background: url(../images/goldstar.png);
   background-size: cover;
   border-style: none;
   float: right;
@@ -22,8 +29,12 @@ body {
   padding: 5px;
   width: 35px;
 }
-.card-name {
-  font-size: 20px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid dimgrey;
+.card-fav-btn {
+  background: url(../images/silverstar.png);
+  background-size: cover;
+  border-style: none;
+  float: right;
+  height: 35px;
+  padding: 5px;
+  width: 35px;
 }
