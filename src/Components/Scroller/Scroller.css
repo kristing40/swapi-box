@@ -13,7 +13,7 @@ html {
   flex-direction: column;
   overflow: hidden;
   padding: 10px;
-  height: 200%;
+  height: 100vh;
   width: 25%;
   perspective: 1500px;
   text-align: justify;
