@@ -15,9 +15,9 @@ body {
 }
 
 .card-name {
+  border-bottom: 1px solid dimgrey;
   font-size: 20px;
   padding-bottom: 10px;
-  border-bottom: 1px solid dimgrey;
 }
 
 .card-unfav-btn {
@@ -43,8 +43,8 @@ body {
 
 @media screen and (max-width: 500px) {
   .card {
-    width: 80%;
     text-align: center;
+    width: 80%;
   }
 }
 
@@ -63,5 +63,11 @@ body {
 @media screen and (min-width: 700px) and (max-width: 793px){
   .card {
     width: 28%;
+  }
+}
+
+@media screen and (min-width: 793px) and (max-width: 1010px){
+  .card {
+    width: 45%;
   }
 }
