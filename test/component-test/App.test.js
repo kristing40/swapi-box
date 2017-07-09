@@ -6,7 +6,7 @@ import { shallow, mount } from 'enzyme';
 import fetchMock from 'fetch-mock';
 import 'whatwg-fetch';
 import { mockScrollerData } from '../mockData/mockScrollerData';
-import { mockVehicleData } from '../mockData/mockVehicleData'
+import { mockVehicleData } from '../mockData/mockVehicleData';
 
 
 describe('App', () => {
@@ -38,7 +38,7 @@ describe('Scroller TEST - ALL', () => {
 
   afterEach(() => {
     expect(fetchMock.calls().unmatched).toEqual([]);
-    fetchMock.restore()
+    fetchMock.restore();
   })
 
     it('should fetch the scroller', async () => {
@@ -73,13 +73,13 @@ describe('Scroller TEST - ALL', () => {
 
       const wrapper = mount(<App />);
 
-      expect(wrapper.state().scrollerText.length).toBe(0)
-      expect(wrapper.state().scrollerTitle.length).toBe(0)
-      expect(wrapper.state().releaseDate.length).toBe(0)
+      expect(wrapper.state().scrollerText.length).toBe(0);
+      expect(wrapper.state().scrollerTitle.length).toBe(0);
+      expect(wrapper.state().releaseDate.length).toBe(0);
 
-      expect(wrapper.find('.scroller-txt').text().length).toBe(0)
-      expect(wrapper.find('.scroller-title').text().length).toBe(0)
-      expect(wrapper.find('.release-date').text().length).toBe(0)
+      expect(wrapper.find('.scroller-txt').text().length).toBe(0);
+      expect(wrapper.find('.scroller-title').text().length).toBe(0);
+      expect(wrapper.find('.release-date').text().length).toBe(0);
 
       expect(fetchMock.called()).toEqual(true);
 
@@ -91,12 +91,11 @@ describe('Scroller TEST - ALL', () => {
       expect(wrapper.state().scrollerTitle.length).toBeGreaterThan(0);
       expect(wrapper.state().releaseDate.length).toBeGreaterThan(0);
 
-      expect(wrapper.find('.scroller-title').text().length).toBeGreaterThan(0)
-      expect(wrapper.find('.scroller-title').text().length).toBeGreaterThan(0)
-      expect(wrapper.find('.release-date').text().length).toBeGreaterThan(0)
+      expect(wrapper.find('.scroller-title').text().length).toBeGreaterThan(0);
+      expect(wrapper.find('.scroller-title').text().length).toBeGreaterThan(0);
+      expect(wrapper.find('.release-date').text().length).toBeGreaterThan(0);
   });
-})
-
+});
 
 describe('fetch vehicle TEST - ALL', () => {
   const resolveAfter2Seconds = () => {
@@ -108,7 +107,7 @@ describe('fetch vehicle TEST - ALL', () => {
   }
   afterEach(() => {
     expect(fetchMock.calls().unmatched).toEqual([]);
-    fetchMock.restore()
+    fetchMock.restore();
   })
 
   it('Should render vehicle data when vehicle button is pressed', async () => {
@@ -153,7 +152,7 @@ describe('fetch vehicle TEST - ALL', () => {
     const vehicleBtn = wrapper.find('.button-container').childAt(2).find('.btn');
 
     expect(wrapper.state().vehicles.length).toBe(0);
-    expect(wrapper.find('.card').exists()).toBe(false)
+    expect(wrapper.find('.card').exists()).toBe(false);
 
     expect(wrapper.contains(<p className="card-name">Sand Crawler</p>)).toBe(false);
     expect(wrapper.contains(<p className="card-name">T-16 skyhopper</p>)).toBe(false);
@@ -164,14 +163,14 @@ describe('fetch vehicle TEST - ALL', () => {
 
     expect(fetchMock.done('http://swapi.co/api/vehicles/')).toBe(true);
 
-    expect(wrapper.state().vehicles.length).toBe(2)
-    expect(wrapper.find('.card').exists()).toBe(true)
-    expect(wrapper.find('.card').length).toBe(2)
+    expect(wrapper.state().vehicles.length).toBe(2);
+    expect(wrapper.find('.card').exists()).toBe(true);
+    expect(wrapper.find('.card').length).toBe(2);
 
     expect(wrapper.contains(<p className="card-name">Sand Crawler</p>)).toBe(true);
     expect(wrapper.contains(<p className="card-name">T-16 skyhopper</p>)).toBe(true);
-  })
-})
+  });
+});
 
 
 
