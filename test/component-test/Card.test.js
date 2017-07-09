@@ -31,13 +31,13 @@ it('should render data when data is passed in.', ()=> {
 it('should not render residents if they are not passed in', () => {
   const wrapper = shallow(<Card data={mockDataEmpty} />);
 
-  expect(wrapper.contains(<p>Residents: </p> )).toBe(false);
+  expect(wrapper.contains(<p>Residents:</p> )).toBe(false);
 });
 
 it('should render residents if they are passed in', () => {
   const wrapper = shallow(<Card data={mockData} />);
 
-  expect(wrapper.contains(<p>Residents: </p>)).toBe(true);
+  expect(wrapper.contains(<p>Residents:</p>)).toBe(true);
   expect(wrapper.contains(<p>Tom</p>)).toBe(true);
   expect(wrapper.contains(<p>Dick</p>)).toBe(true);
   expect(wrapper.contains(<p>Harry</p>)).toBe(true);
@@ -48,7 +48,7 @@ it('should should fire a function when favorites button is clicked',() => {
   const wrapper = mount(<Card addToFavorites={mockHandleClick}
                               data={mockDataEmpty}/>);
 
-  const button = wrapper.find('.card-fav-btn');
+  const button = wrapper.find('.card-unfav-btn');
 
   expect(mockHandleClick).toHaveBeenCalledTimes(0);
 

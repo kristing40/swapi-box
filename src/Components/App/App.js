@@ -29,7 +29,6 @@ class App extends Component {
   }
 
 
-
   fetchScroller(randomNumber) {
     fetch('http://swapi.co/api/films/' + randomNumber + '/')
       .then((response) => response.json())
