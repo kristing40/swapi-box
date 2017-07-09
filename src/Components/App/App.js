@@ -7,7 +7,6 @@ import Header from '../Header/Header';
 import ButtonContainer from '../ButtonContainer/ButtonContainer';
 import CardContainer from '../CardContainer/CardContainer';
 import { randomNumberGenerator } from './AppHelpers.js'
-const $ = require('jquery');
 
 class App extends Component {
   constructor (){
