@@ -51,7 +51,7 @@ const CardContainer = ({ peopleData,
 
   return (
     <div className="card-container">
-      <p className='card-view'>{view.toUpperCase()}</p>
+      <p className='card-view'>{ view ? view.toUpperCase() : null}</p>
       {  peopleCard ||
          planetCard ||
         vehicleCard ||

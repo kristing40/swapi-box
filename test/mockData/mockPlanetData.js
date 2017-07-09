@@ -1,7 +1,4 @@
 export const mockPlanetData = {
-    "count": 61,
-    "next": "http://swapi.co/api/planets/?page=2",
-    "previous": null,
     "results": [
         {
             "name": "Alderaan",
@@ -19,7 +16,19 @@ export const mockPlanetData = {
             "climate": "frozen",
             "terrain": "tundra, ice caves, mountain ranges",
             "population": "unknown",
-            "residents": [], 
+            "residents": [],
         },
     ]
+}
+
+export const mockRes1 = {
+    "name": "Leia Organa",
+}
+
+export const mockRes2 = {
+    "name": "Bail Prestor Organa",
+  }
+
+export const mockRes3 = {
+    "name": "Raymus Antilles",
 }
