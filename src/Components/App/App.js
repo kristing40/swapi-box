@@ -6,7 +6,7 @@ import Scroller from '../Scroller/Scroller';
 import Header from '../Header/Header';
 import ButtonContainer from '../ButtonContainer/ButtonContainer';
 import CardContainer from '../CardContainer/CardContainer';
-const $ = require('jquery');
+import { randomNumberGenerator } from './AppHelpers.js'
 
 class App extends Component {
   constructor (){
@@ -29,9 +29,7 @@ class App extends Component {
     this.changeFavoritedImageClick = this.changeFavoritedImageClick.bind(this);
   }
 
-  randomNumberGenerator(min, max) {
-      return Math.floor(Math.random() * (max - min + 1) + min);
-  }
+
 
   fetchScroller(randomNumber) {
     fetch('http://swapi.co/api/films/' + randomNumber + '/')
@@ -42,7 +40,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const ranNum = this.randomNumberGenerator(1, 7);
+    const ranNum = randomNumberGenerator(1, 7);
     this.fetchScroller(ranNum);
   }
 
