@@ -1,7 +1,7 @@
 import React from 'react';
 import './ButtonContainer.css';
 import Button from '../Button/Button';
-import PropTypes, { func } from 'prop-types';
+import { func } from 'prop-types';
 
 const ButtonContainer = ({
     handlePeopleCLick,

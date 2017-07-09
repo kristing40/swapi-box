@@ -6,7 +6,7 @@ import Scroller from '../Scroller/Scroller';
 import Header from '../Header/Header';
 import ButtonContainer from '../ButtonContainer/ButtonContainer';
 import CardContainer from '../CardContainer/CardContainer';
-import { randomNumberGenerator } from './AppHelpers.js'
+import { randomNumberGenerator } from '../../AppHelpers.js'
 
 class App extends Component {
   constructor (){

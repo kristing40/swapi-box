@@ -1,6 +1,7 @@
 import React from 'react';
 import './CardContainer.css';
 import Card from '../Card/Card';
+import { addKey } from '../../AppHelpers.js'
 
 const CardContainer = ({ peopleData,
                          planetData,
@@ -14,9 +15,9 @@ const CardContainer = ({ peopleData,
   let vehicleCard;
   let favoriteCard;
 
-  const mapCardsCallback = (cardData, index) => {
+  const mapCardsCallback = (cardData) => {
     return (
-      <Card key={index}
+      <Card key={addKey()}
             data={cardData}
             addToFavorites={addToFavorites} />
     );
