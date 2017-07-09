@@ -7,7 +7,7 @@ import fetchMock from 'fetch-mock';
 import 'whatwg-fetch';
 import { mockScrollerData } from '../mockData/mockScrollerData';
 import { mockVehicleData } from '../mockData/mockVehicleData';
-
+import { mockPeopleData, mockHomeWorld, mockSpeciesLuke, mockSpeciesC3PO} from '../mockData/mockPeopleData';
 
 describe('App', () => {
 
@@ -171,6 +171,94 @@ describe('fetch vehicle TEST - ALL', () => {
     expect(wrapper.contains(<p className="card-name">T-16 skyhopper</p>)).toBe(true);
   });
 });
+
+describe('fetch people TEST - ALL', () => {
+  const resolveAfter2Seconds = () => {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve();
+      }, 2000);
+    });
+  }
+  afterEach(() => {
+    expect(fetchMock.calls().unmatched).toEqual([]);
+    fetchMock.restore();
+  })
+
+  it('Should render peopole data when vehicle button is pressed', async () => {
+    //For scroller load on componentDidMount()
+    fetchMock.get('http://swapi.co/api/films/1/', {
+      status: 200,
+      body: JSON.stringify(mockScrollerData)
+    });
+    fetchMock.get('http://swapi.co/api/films/2/', {
+      status: 200,
+      body: JSON.stringify(mockScrollerData)
+    });
+    fetchMock.get('http://swapi.co/api/films/3/', {
+      status: 200,
+      body: JSON.stringify(mockScrollerData)
+    });
+    fetchMock.get('http://swapi.co/api/films/4/', {
+      status: 200,
+      body: JSON.stringify(mockScrollerData)
+    });
+    fetchMock.get('http://swapi.co/api/films/5/', {
+      status: 200,
+      body: JSON.stringify(mockScrollerData)
+    });
+    fetchMock.get('http://swapi.co/api/films/6/', {
+      status: 200,
+      body: JSON.stringify(mockScrollerData)
+    });
+    fetchMock.get('http://swapi.co/api/films/7/', {
+      status: 200,
+      body: JSON.stringify(mockScrollerData)
+    });
+
+    //For People Fectch
+    fetchMock.get('http://swapi.co/api/people/', {
+      status: 200,
+      body: JSON.stringify(mockPeopleData)
+    });
+    fetchMock.get('http://swapi.co/api/planets/1/', {
+      status: 200,
+      body: JSON.stringify(mockHomeWorld)
+    });
+    fetchMock.get('http://swapi.co/api/species/1/', {
+      status: 200,
+      body: JSON.stringify(mockSpeciesLuke)
+    });
+    fetchMock.get('http://swapi.co/api/species/2/', {
+      status: 200,
+      body: JSON.stringify(mockHomeWorld)
+    });
+    fetchMock.get('http://swapi.co/api/species/2/', {
+      status: 200,
+      body: JSON.stringify(mockSpeciesC3PO)
+    });
+
+    const wrapper = mount(<App />);
+    const peopleBtn = wrapper.find('.button-container').childAt(0).find('.btn');
+
+    expect(wrapper.state().people.length).toBe(0);
+    expect(wrapper.find('.card').exists()).toBe(false);
+
+    expect(wrapper.contains(<p className="card-name">Luke Skywalker</p>)).toBe(false);
+    expect(wrapper.contains(<p className="card-name">C-3PO</p>)).toBe(false);
+
+    peopleBtn.simulate('click');
+
+    await resolveAfter2Seconds();
+
+    expect(wrapper.state().people.length).toBe(2);
+    expect(wrapper.find('.card').exists()).toBe(true);
+
+    expect(wrapper.contains(<p className="card-name">Luke Skywalker</p>)).toBe(true);
+    expect(wrapper.contains(<p className="card-name">C-3PO</p>)).toBe(true);
+  });
+});
+
 
 
 
