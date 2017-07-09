@@ -1,19 +1,16 @@
-body {
-  box-sizing: border-box;
-}
 .button-div {
   display: inline-block;
   height: 50px;
-  width: 20%;
   text-align: center;
+  width: 20%;
 }
 
 .btn {
   background-color: #0b0b0b;
   color: #C0C0C0;
   height: 30px;
-  width: 90px;
   margin: 8px;
+  width: 90px;
 }
 
 

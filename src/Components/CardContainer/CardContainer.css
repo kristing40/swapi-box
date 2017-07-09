@@ -1,13 +1,11 @@
 .card-container {
+  background-color: 	#dba622;
+  color: #0b0b0b;
   display: flex;
   flex-wrap: wrap;
-  justify-content:flex-start;
-  background-color: 	#dba622;
-  flex-wrap: wrap;
-  overflow-y: scroll;
-  padding: 0 40px 0 40px;
   height: 66vh;
-  color: #0b0b0b;
+  justify-content: center;
+  overflow-y: scroll;
 }
 .favorites-empty {
   font-size: 40px;
