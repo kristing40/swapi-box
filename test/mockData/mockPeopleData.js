@@ -1,7 +1,4 @@
 export const mockPeopleData = {
-    "count": 87,
-    "next": "http://swapi.co/api/people/?page=2",
-    "previous": null,
     "results": [
         {
             "name": "Luke Skywalker",
@@ -22,12 +19,8 @@ export const mockPeopleData = {
 
 
 
-export const mockHomeWorldLuke = {
+export const mockHomeWorld = {
     "name": "Tatooine"
-}
-
-export const mockHomeWorldC3PO = {
-  "name": "Tatooine"
 }
 
 export const mockSpeciesLuke = {

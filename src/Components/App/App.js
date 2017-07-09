@@ -35,7 +35,8 @@ class App extends Component {
       .then((response) => response.json())
       .then((responseData) => {
         this.setState({scrollerText: responseData.opening_crawl, scrollerTitle: responseData.title, releaseDate: responseData.release_date})
-      });
+      }).catch(error => {
+          console.log(error, 'error fetching vehicles')})
   }
 
   componentDidMount() {
@@ -58,7 +59,8 @@ class App extends Component {
           .then((finalResult) => ({name: e.name, homeworld: 'Homeworld: ' + finalResult[0].name, population:'Population: ' + finalResult[0].population, species:'Species: ' + finalResult[1].name, language:'Language: ' +  finalResult[1].language, favorited: false}))
         });
         return Promise.all(peopleArray)
-      })
+      }).catch(error => {
+          console.log(error, 'error fetching people')})
   }
 
   handlePeopleCLick() {
@@ -90,6 +92,8 @@ getPlanetData() {
     })
     return Promise.all(residentArray)
   })
+  .catch(error => {
+    console.log(error, 'error fetching planets')})
 }
 
 handlePlanetCLick() {
@@ -102,7 +106,7 @@ handlePlanetCLick() {
       this.setState({
         planets: planetsData,
         view: 'planets'
-       });
+      })
     });
 }
 
@@ -130,7 +134,9 @@ getVehicles() {
       vehicles: cleanedVehicles,
       view: 'vehicles'
     });
-  });
+  })
+  .catch(error => {
+    console.log(error, 'error fetching vehicles')})
   }
 
   handleVehicleCLick() {
