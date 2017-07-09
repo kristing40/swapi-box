@@ -8,7 +8,7 @@ body {
   margin: 10px;
   padding: 5px;
   text-align: center;
-  /*width: 29%;*/
+  width: 29%;
   -webkit-box-shadow: 0 8px 6px -6px black;
      -moz-box-shadow: 0 8px 6px -6px black;
           box-shadow: 0 8px 6px -6px black;
@@ -60,8 +60,8 @@ body {
   }
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 700px) and (max-width: 793px){
   .card {
-    width: 29%;
+    width: 28%;
   }
 }
