@@ -67,3 +67,10 @@ html {
     transform: rotateX(25deg) translateZ(-2000px);
   }
 }
+
+/***Media Queries***/
+@media screen and (max-width: 800px) {
+  .scroller {
+    display: none;
+  }
+}

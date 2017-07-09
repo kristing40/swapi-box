@@ -26,7 +26,6 @@ class App extends Component {
     this.handleVehicleCLick = this.handleVehicleCLick.bind(this);
     this.addToFavorites = this.addToFavorites.bind(this);
     this.handleFavoritesClick = this.handleFavoritesClick.bind(this);
-    this.changeFavoritedImageClick = this.changeFavoritedImageClick.bind(this);
   }
 
   randomNumberGenerator(min, max) {
@@ -141,7 +140,6 @@ getVehicles() {
   }
 
   addToFavorites(data) {
-    console.log(data);
     if (data.favorited === true) {
       data.favorited = false;
       const newFavoritesArray = this.state.favorites.filter(favorite => {
@@ -175,12 +173,6 @@ getVehicles() {
       view: "favorites",
       favorites: newFavorites
     });
-  }
-
-  changeFavoritedImageClick() {
-    // $(".card-unfav-btn").click(function() {
-    //     $("p").toggleClass(".card-fav-btn");
-    //   }
   }
 
   render() {

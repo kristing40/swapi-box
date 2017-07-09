@@ -15,3 +15,12 @@ body {
   width: 90px;
   margin: 8px;
 }
+
+
+/***Media Queries***/
+@media screen and (max-width: 670px) {
+  .btn {
+    font-size: 75%;
+    width: 70px;
+  }
+}
