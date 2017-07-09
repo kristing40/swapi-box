@@ -1,5 +1,5 @@
 import React from 'react';
-import css from './Card.css';
+import './Card.css';
 import PropTypes, { object, func } from 'prop-types';
 
 const Card = ({ data, addToFavorites }) => {
