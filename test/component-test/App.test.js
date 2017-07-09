@@ -112,6 +112,7 @@ describe('fetch vehicle TEST - ALL', () => {
   })
 
   it('Should render vehicle data when vehicle button is pressed', async () => {
+    //For scroller load on componentDidMount()
     fetchMock.get('http://swapi.co/api/films/1/', {
       status: 200,
       body: JSON.stringify(mockScrollerData)
@@ -141,6 +142,7 @@ describe('fetch vehicle TEST - ALL', () => {
       body: JSON.stringify(mockScrollerData)
     });
 
+    //For fetching vehicle data
     fetchMock.get('http://swapi.co/api/vehicles/', {
       status: 200,
       body: JSON.stringify(mockVehicleData)
@@ -148,24 +150,26 @@ describe('fetch vehicle TEST - ALL', () => {
 
     const wrapper = mount(<App />);
 
-    // console.log(wrapper.debug());
-    const vehicleBtn = wrapper.find('.button-container').childAt(3).find('.btn')
-    // console.log(vehicleBtn.debug());
-    console.log(vehicleBtn.debug());
-    expect(wrapper.state().vehicles.length).toBe(0);
+    const vehicleBtn = wrapper.find('.button-container').childAt(2).find('.btn');
 
-    vehicleBtn.simulate('click')
-    
+    expect(wrapper.state().vehicles.length).toBe(0);
+    expect(wrapper.find('.card').exists()).toBe(false)
+
+    expect(wrapper.contains(<p className="card-name">Sand Crawler</p>)).toBe(false);
+    expect(wrapper.contains(<p className="card-name">T-16 skyhopper</p>)).toBe(false);
+
+    vehicleBtn.simulate('click');
+
     await resolveAfter2Seconds();
 
-    expect(fetchMock.done('http://swapi.co/api/vehicles/'));
-    console.log(fetchMock.done('http://swapi.co/api/vehicles/'));
+    expect(fetchMock.done('http://swapi.co/api/vehicles/')).toBe(true);
 
-    // console.log(wrapper.debug());
-    // console.log(wrapper.state().vehicles);
+    expect(wrapper.state().vehicles.length).toBe(2)
+    expect(wrapper.find('.card').exists()).toBe(true)
+    expect(wrapper.find('.card').length).toBe(2)
 
-
-
+    expect(wrapper.contains(<p className="card-name">Sand Crawler</p>)).toBe(true);
+    expect(wrapper.contains(<p className="card-name">T-16 skyhopper</p>)).toBe(true);
   })
 })
 
