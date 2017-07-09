@@ -1,5 +1,5 @@
 import React from 'react';
-import css from './Scroller.css';
+import './Scroller.css';
 
 const Scroller = ({ scrollerText, scrollerTitle, releaseDate }) => {
   return (

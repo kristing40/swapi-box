@@ -5,11 +5,13 @@ import Button from '../../src/Components/Button/Button'
 import { shallow, mount } from 'enzyme';
 
 it('should render ', () => {
-  const wrapper = shallow(<ButtonContainer/>)
-  expect(wrapper.find('.button-container').length).toBe(1)
+  const wrapper = shallow(<ButtonContainer/>);
+
+  expect(wrapper.find('.button-container').length).toBe(1);
 });
 
-it('should have three buttons', () => {
-  const wrapper = shallow(<ButtonContainer/>)
-  expect(wrapper.find(Button).length).toBe(4)
-})
+it('should have four buttons', () => {
+  const wrapper = shallow(<ButtonContainer/>);
+
+  expect(wrapper.find(Button).length).toBe(4);
+});

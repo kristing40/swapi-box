@@ -11,7 +11,7 @@ const mockData = {
   residents: ['Tom', 'Dick', 'Harry']
 };
 
-const mockDataEmpty = {}
+const mockDataEmpty = {};
 
 it('should mount', () => {
   const wrapper = shallow(<Card data={mockDataEmpty}/>);
@@ -29,13 +29,13 @@ it('should render data when data is passed in.', ()=> {
 });
 
 it('should not render residents if they are not passed in', () => {
-  const wrapper = shallow(<Card data={mockDataEmpty}/>);
+  const wrapper = shallow(<Card data={mockDataEmpty} />);
 
   expect(wrapper.contains(<p>Residents: </p> )).toBe(false);
 });
 
 it('should render residents if they are passed in', () => {
-  const wrapper = shallow(<Card data={mockData}/>);
+  const wrapper = shallow(<Card data={mockData} />);
 
   expect(wrapper.contains(<p>Residents: </p>)).toBe(true);
   expect(wrapper.contains(<p>Tom</p>)).toBe(true);
@@ -44,7 +44,6 @@ it('should render residents if they are passed in', () => {
 });
 
 it('should should fire a function when favorites button is clicked',() => {
-
   const mockHandleClick = jest.fn();
   const wrapper = mount(<Card addToFavorites={mockHandleClick}
                               data={mockDataEmpty}/>);

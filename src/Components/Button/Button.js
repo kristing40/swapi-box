@@ -1,5 +1,5 @@
 import React from 'react';
-import css from './Button.css';
+import './Button.css';
 import PropTypes, { string, func } from 'prop-types';
 
 
