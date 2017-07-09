@@ -1,6 +1,6 @@
 import React from 'react';
 import './Button.css';
-import PropTypes, { string, func } from 'prop-types';
+import { string, func } from 'prop-types';
 
 
 

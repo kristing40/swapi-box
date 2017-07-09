@@ -1,6 +1,6 @@
 import React from 'react';
 import './Card.css';
-import PropTypes, { object, func } from 'prop-types';
+import { object, func } from 'prop-types';
 
 const Card = ({ data, addToFavorites }) => {
   const cardArray = Object.keys(data).map((cardKey, index) => {
