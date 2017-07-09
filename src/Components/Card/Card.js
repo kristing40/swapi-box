@@ -4,7 +4,9 @@ import { object, func } from 'prop-types';
 import { addKey } from '../../AppHelpers.js'
 
 const Card = ({ data, addToFavorites }) => {
-  const cardArray = Object.keys(data).map(cardKey => {
+  let keys = Object.keys(data);
+  keys.shift();
+  const cardArray = keys.map(cardKey => {
     if (data.residents && cardKey === 'residents') {
       const residentArray = data[cardKey].map(resident => {
         return <p key={addKey()}>{resident}</p>
