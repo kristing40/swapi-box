@@ -54,7 +54,7 @@ html {
    position: relative;
    top: 0;
    transform-origin: 70% 100%;
-   animation: 18s crawl linear infinite;
+   animation: 17s crawl linear infinite;
 }
 
 @keyframes crawl {
