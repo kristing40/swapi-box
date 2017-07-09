@@ -1,20 +1,21 @@
 import React from 'react';
 import './Card.css';
 import { object, func } from 'prop-types';
+import { addKey } from '../../AppHelpers.js'
 
 const Card = ({ data, addToFavorites }) => {
-  const cardArray = Object.keys(data).map((cardKey, index) => {
+  const cardArray = Object.keys(data).map(cardKey => {
     if (data.residents && cardKey === 'residents') {
-      const residentArray = data[cardKey].map((resident, index) => {
-        return <p key={index}>{resident}</p>
+      const residentArray = data[cardKey].map(resident => {
+        return <p key={addKey()}>{resident}</p>
       });
 
-      return (<div key={index}>
+      return (<div key={addKey()}>
                 <p>Residents:</p>
                 {residentArray}
               </div>);
     }
-    return <p key={index}>{data[cardKey]}</p>
+    return <p key={addKey()}>{data[cardKey]}</p>
   })
 
   const addFavClass = (data) => {
