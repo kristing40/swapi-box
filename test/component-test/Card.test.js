@@ -22,11 +22,11 @@ it('should mount', () => {
 it('should render data when data is passed in.', ()=> {
   const wrapper = shallow(<Card data={mockData} />);
 
-  expect(wrapper.contains(<p>Neptune</p>)).toBe(true);
   expect(wrapper.contains(<p>ten</p>)).toBe(true);
   expect(wrapper.contains(<p>Gorna</p>)).toBe(true);
   expect(wrapper.contains(<p>Kleptoid</p>)).toBe(true);
 });
+
 
 it('should not render residents if they are not passed in', () => {
   const wrapper = shallow(<Card data={mockDataEmpty} />);
