@@ -8,7 +8,8 @@ import ButtonContainer from '../ButtonContainer/ButtonContainer';
 import CardContainer from '../CardContainer/CardContainer';
 import { randomNumberGenerator } from '../../AppHelpers.js';
 import Vehicles from '../FetchHelpers/Vehicles'
-import Planets from '../FetchHelpers/Planets'
+import Planets from '../FetchHelpers/Planets';
+import People from '../FetchHelpers/People'
 
 class App extends Component {
   constructor (){
@@ -45,32 +46,13 @@ class App extends Component {
     this.fetchScroller(ranNum);
   }
 
-  getPeopleData() {
-    return fetch('http://swapi.co/api/people/')
-      .then((response) => response.json())
-      .then((data) => {
-        const peopleArray = data.results.map(e => {
-        const homeworld = fetch(e.homeworld)
-          .then((response) => response.json())
-          .then((planet) => ({name: planet.name, population: planet.population}))
-        const species = fetch(e.species[0])
-          .then((response) => response.json())
-          .then((spec) => ({name: spec.name, language: spec.language}))
-          return Promise.all([homeworld, species])
-          .then((finalResult) => ({name: e.name, homeworld: 'Homeworld: ' + finalResult[0].name, population:'Population: ' + finalResult[0].population, species:'Species: ' + finalResult[1].name, language:'Language: ' +  finalResult[1].language, favorited: false}))
-        });
-        return Promise.all(peopleArray)
-      }).catch(error => {
-          console.log(error, 'error fetching people')})
-  }
-
   handlePeopleCLick() {
     if (this.state.people.length > 0) {
       this.setState({view: 'people'});
       return
     }
 
-    this.getPeopleData()
+    new People().getPeopleData()
       .then((response) => {
         this.setState({
           people: response,
