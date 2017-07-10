@@ -7,7 +7,7 @@
   height: 100vh;
   overflow: hidden;
   perspective: 1500px;
-  padding: 10px;
+  padding: 20px;
   text-align: justify;
   width: 25%;
 }
@@ -28,6 +28,7 @@
   font-weight: bold;
   margin-bottom: 1px;
   margin-top: 50px;
+  text-align: center;
   text-transform: uppercase;
 }
 
@@ -44,7 +45,7 @@
 }
 
 .crawl {
-  animation: 17s crawl linear infinite;
+  animation: 40s crawl linear infinite;
   position: relative;
   top: 0;
   transform-origin: 70% 100%;
@@ -53,12 +54,12 @@
 @keyframes crawl {
   0% {
     top: 0;
-    transform: rotateX(20deg) translateZ(0);
+    transform: translateY(55%);
   }
-  
+
   100% {
-    top: -5000px;
-    transform: rotateX(25deg) translateZ(-2000px);
+    top: -100%;
+    transform: translateY(-50%) ;
   }
 }
 

@@ -6,7 +6,9 @@ import Scroller from '../Scroller/Scroller';
 import Header from '../Header/Header';
 import ButtonContainer from '../ButtonContainer/ButtonContainer';
 import CardContainer from '../CardContainer/CardContainer';
-import { randomNumberGenerator } from '../../AppHelpers.js'
+import { randomNumberGenerator } from '../../AppHelpers.js';
+import Vehicles from '../FetchHelpers/Vehicles'
+import Planets from '../FetchHelpers/Planets'
 
 class App extends Component {
   constructor (){
@@ -77,30 +79,12 @@ class App extends Component {
       });
   }
 
-getPlanetData() {
-  return fetch('http://swapi.co/api/planets/')
-  .then((response) => response.json())
-  .then((responseData) => {
-    const residentArray = responseData.results.map(planet => {
-      return Promise.all(planet.residents.map(url => {
-        return fetch(url)
-          .then(data => data.json())
-          .then(cleanData => cleanData.name)
-      }))
-      .then(response => ({name: planet.name, terrain:'Terrain: ' + planet.terrain, climate:'Climate: ' + planet.climate, population:'Population: ' + planet.population, residents: response, favorited: false}))
-    })
-    return Promise.all(residentArray)
-  })
-  .catch(error => {
-    console.log(error, 'error fetching planets')})
-}
-
 handlePlanetCLick() {
   if (this.state.planets.length > 0) {
     this.setState({view: 'planets'});
     return
   }
-  this.getPlanetData()
+  new Planets().getPlanetData()
     .then(planetsData => {
       this.setState({
         planets: planetsData,
@@ -109,37 +93,8 @@ handlePlanetCLick() {
     });
 }
 
-getVehicles() {
-  if (this.state.vehicles.length > 0) {
-    this.setState({view: 'vehicles'})
-    return
-  }
-  return fetch('http://swapi.co/api/vehicles/')
-  .then((response) => response.json())
-  .then((vehicleResponse) => {
-    const cleanedVehicles = vehicleResponse.results.map((vehicle) => {
-      return ({
-        name: vehicle.name,
-        model: 'Vehicle: ' + vehicle.model,
-        class:'Class: ' + vehicle.vehicle_class,
-        passengers:'Passengers: ' + vehicle.passengers,
-        favorited: false
-      });
-    });
-    return cleanedVehicles;
-  })
-  .then((cleanedVehicles) => {
-    this.setState({
-      vehicles: cleanedVehicles,
-      view: 'vehicles'
-    });
-  })
-  .catch(error => {
-    console.log(error, 'error fetching vehicles')})
-  }
-
   handleVehicleCLick() {
-    this.getVehicles();
+    new Vehicles().getVehicles(this);
   }
 
   addToFavorites(data) {
