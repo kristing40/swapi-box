@@ -61,19 +61,19 @@ class App extends Component {
       });
   }
 
-handlePlanetCLick() {
-  if (this.state.planets.length > 0) {
-    this.setState({view: 'planets'});
-    return
+  handlePlanetCLick() {
+    if (this.state.planets.length > 0) {
+      this.setState({view: 'planets'});
+      return
+    }
+    new Planets().getPlanetData()
+      .then(planetsData => {
+        this.setState({
+          planets: planetsData,
+          view: 'planets'
+        })
+      });
   }
-  new Planets().getPlanetData()
-    .then(planetsData => {
-      this.setState({
-        planets: planetsData,
-        view: 'planets'
-      })
-    });
-}
 
   handleVehicleCLick() {
     new Vehicles().getVehicles(this);

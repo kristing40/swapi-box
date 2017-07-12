@@ -21,3 +21,5 @@ class People {
   }
 }
 export default People;
+
+//use backticks
