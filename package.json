@@ -1,5 +1,6 @@
 {
   "name": "swapi-box",
+  "homepage": "https://github.com/kristing40/swapi-box",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
@@ -9,6 +10,7 @@
     "react-test-renderer": "^15.6.1"
   },
   "dependencies": {
+    "gh-pages": "^1.0.0",
     "react": "^15.4.2"
   },
   "scripts": {

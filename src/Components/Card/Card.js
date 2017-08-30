@@ -20,6 +20,7 @@ const Card = ({ data, addToFavorites }) => {
   })
 
   const addFavClass = (data) => {
+    console.log(data.favorited);
     return data.favorited === true ? 'card-fav-btn' : 'card-unfav-btn';
   }
 
